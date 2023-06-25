@@ -28,34 +28,41 @@ const {
 		<script define:vars={{ siteConfig }}>
 			const root = document.documentElement;
 			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
-
-			// get user preference of dark mode, 1st local storage, 2nd browser
-			function getThemePreference() {
+			
+			const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			
+			function getLocalStoragePreference() {
 				if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
 					return localStorage.getItem("theme");
 				}
-				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+				return 'system';
 			}
 
-			const isDark = getThemePreference() === "dark";
+			let theme = getLocalStoragePreference();
+			if (theme === 'system') {
+				theme = colorSchemeQuery.matches ? "dark" : "light";
+			}
 
-			// watch document element class attribute and update user preference when it changes.
-			const observer = new MutationObserver(() => {
-				const rootIsDark = root.classList.contains("dark");
+			function toggleTheme() {
+				if (getLocalStoragePreference() !== 'system') {
+					return;
+				}
+				const currentColorMode = colorSchemeQuery.matches ? "dark" : "light";
+				const nowIsDark = currentColorMode === 'dark';
+
 				// set the meta attribute
 				colorThemeMetaTag.setAttribute(
 					"content",
-					siteConfig[rootIsDark ? "themeColorDark" : "themeColorLight"]
+					siteConfig[nowIsDark ? "themeColorDark" : "themeColorLight"]
 				);
-				// store user preference
-				if (typeof localStorage !== "undefined") {
-					localStorage.setItem("theme", rootIsDark ? "dark" : "light");
-				}
-			});
-			observer.observe(root, { attributeFilter: ["class"] });
+				// toggle the class on the root element
+				root.classList.toggle("dark", nowIsDark === 'dark');
+			}
 
-			// initailse root class attribute
+			const isDark = theme === "dark";
+
 			root.classList.toggle("dark", isDark);
+			colorSchemeQuery.addEventListener('change', toggleTheme);
 		</script>
 	</head>
 	<body>
