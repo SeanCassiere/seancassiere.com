@@ -1,5 +1,5 @@
 /** @type {import("@types/eslint").Linter.Config} */
-module.exports = {
+const config = {
 	ignorePatterns: ["node_modules", "dist"],
 	root: true,
 	env: {
@@ -58,3 +58,5 @@ module.exports = {
 		"@typescript-eslint/no-var-requires": "warn",
 	},
 };
+
+module.exports = config;
