@@ -27,10 +27,10 @@ const {
 		<BaseHead title={title} description={description} ogImage={ogImage} articleDate={articleDate} />
 		<script define:vars={{ siteConfig }}>
 			const root = document.documentElement;
+
 			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
-			
 			const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-			
+
 			function getLocalStoragePreference() {
 				if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
 					return localStorage.getItem("theme");
@@ -47,7 +47,8 @@ const {
 				if (getLocalStoragePreference() !== 'system') {
 					return;
 				}
-				const currentColorMode = colorSchemeQuery.matches ? "dark" : "light";
+
+				const currentColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
 				const nowIsDark = currentColorMode === 'dark';
 
 				// set the meta attribute
@@ -56,7 +57,7 @@ const {
 					siteConfig[nowIsDark ? "themeColorDark" : "themeColorLight"]
 				);
 				// toggle the class on the root element
-				root.classList.toggle("dark", nowIsDark === 'dark');
+				root.classList.toggle("dark", nowIsDark);
 			}
 
 			const isDark = theme === "dark";
