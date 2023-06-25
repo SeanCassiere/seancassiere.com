@@ -1,9 +1,10 @@
 ---
 import { siteConfig } from "@/site-config";
 import ThemeToggle from "../ThemeToggle.astro";
-import { MENU_LINKS } from "@/data/constants";
 
 const url = new URL(Astro.request.url);
+
+const basePath = url.pathname.split("/")[1];
 ---
 
 <script>
@@ -26,7 +27,7 @@ const url = new URL(Astro.request.url);
 
 <header
 	id="main-header"
-	class="group relative mb-28 flex items-center"
+	class="group relative mb-16 flex items-center"
 	aria-label="Header"
 >
 	<div class="flex sm:flex-col">
@@ -42,18 +43,22 @@ const url = new URL(Astro.request.url);
 			class="absolute -inset-x-4 top-14 hidden flex-col items-end gap-y-4 rounded-md bg-[--theme-menu-bg] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:divide-x sm:divide-dashed sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
 			aria-label="Main menu"
 		>
-			{
-				MENU_LINKS.map((link) => (
-					<a
-						href={link.path}
-						class="px-4 py-4 underline-offset-4 aria-[current='page']:underline sm:py-0 sm:hover:underline"
-						aria-current={url.pathname === link.path ? "page" : false}
-						rel="prefetch"
-					>
-						{link.title}
-					</a>
-				))
-			}
+			<a
+				href="/"
+				class="px-4 py-4 underline-offset-4 aria-[current='page']:underline sm:py-0 sm:hover:underline"
+				aria-current={url.pathname === "/" ? "page" : false}
+				rel="prefetch"
+			>
+				Home
+			</a>
+			<a
+				href="/posts"
+				class="px-4 py-4 underline-offset-4 aria-[current='page']:underline sm:py-0 sm:hover:underline"
+				aria-current={basePath === "posts" ? "page" : false}
+				rel="prefetch"
+			>
+				Posts
+			</a>
 		</nav>
 	</div>
 	<ThemeToggle />

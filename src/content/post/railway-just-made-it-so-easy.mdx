@@ -1,0 +1,45 @@
+---
+title: "Railway just made it so easy"
+publishDate: "2022 Aug 25"
+description: "This is the best experience I've had deploying a node application."
+---
+
+## How did I get here?
+
+Around a year and a half back, I deployed a static single-page app on Netlify and it has been working wonderfully ever since. This deployment has an exposed Netlify Function (AWS Lambda) that is used as a middleman to exchange OAuth client_credentials for an access token to be used with a third-party API.
+
+...Fast forward to yesterday, when I felt that I wanted more information regarding who is accessing the Lambas.
+
+I immediately knew that I didn't want to instantiate database connections from a Lambda, and I came to the conclusion that it'd be worthwhile for me to just code-up a simple server that'd do this for me. As a bonus, I could even consider using it across my other applications.
+
+So... I did just that. Coded-up a quick Fastify server and dumped it on Github [(SeanCassiere/simple-logging-server)](https://github.com/SeanCassiere/simple-logging-server).
+
+Now, I had one last hurdle to jump... where am I going to host the server and database?
+
+## ...enter Railway
+
+Up until a couple months back, I hadn't even heard of [Railway](https://railway.app?referralCode=k9d2VP). I came across it in one of [Theo's](https://twitch.tv/theo) streams and it looked pretty neat. I even signed-up for a free-account, but at the time I simply had no use for it...
+
+...until today.
+
+So, I needed a hosted database and a server to run my fastify app on, so I thought "heck, let's give those Railway guys a shot and see what its like".
+
+As someone who's had previous experiences with hosting on GCP and AWS, I decided that I'd give myself around an 1 hour to sort out the provisioning of the database + server and hooking it all up... Turns out, I didn't even need 5 minutes.
+
+## My experience
+
+Now I'm sure their [docs](https://docs.railway.app) are great, however as the arrogant know-it-all developer that I am, I just logged-in clicked on the New button on the Railway dashboard and thought, "let's see where it goes".
+
+From there, in less than a minute and handful of clicks, I had a Postgres database up and running, with the connection string ready to copy. At this stage, it felt like it was too good to be true.
+
+With nearly the full hour remaining, and past experiences haunting me, I braced myself for some hurdle to pop-up that'd end with me having to dive into the docs for a good 20-30 mins. Alas, this was not to be... like with the database, I clicked on the New button, and this time I chose my Github repo. Before I was even **30 seconds** into it, the build process had already begun and with deployment scheduled right after it.
+
+Together, an additional couple minutes to ensure my environment variables were set and that I had pushed the database schema, and my server was running and ready for public consumption. All of this, was before the I had hit the 5 minute mark on my timer.
+
+Writing this entry, I am still blown away at how easy, and straight forward this entire process was. Especially as someone who **_STILL_** hasn't read through their docs.
+
+## TLDR;
+
+I needed a hosted server and database, and in just under 5 minutes had it deployed and ready using [Railway.app](https://railway.app?referralCode=k9d2VP). The team over there have a great solution for me to simply build my apps without having to think of the underlying infra stuff. Give it a look, their pricing looks decent, and I'm probably going to be using them future projects.
+
+If y'all have any other magic services like this, please do let me know!

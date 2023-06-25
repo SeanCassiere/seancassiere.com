@@ -7,6 +7,10 @@ interface SiteConfig {
 	siteName: string;
 	themeColorLight: string;
 	themeColorDark: string;
+	date: {
+		locale: string | string[] | undefined;
+		options: Intl.DateTimeFormatOptions;
+	};
 }
 
 export const siteConfig: SiteConfig = {
@@ -18,4 +22,12 @@ export const siteConfig: SiteConfig = {
 	ogLocale: "en_GB",
 	themeColorLight: "#fafafa",
 	themeColorDark: "#1d1f21",
+	date: {
+		locale: "en-GB",
+		options: {
+			day: "numeric",
+			month: "short",
+			year: "numeric",
+		},
+	},
 };
