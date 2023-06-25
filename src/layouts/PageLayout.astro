@@ -2,54 +2,66 @@
 import type { SiteMeta } from "@/data/site-meta";
 
 import BaseHead from "@/components/BaseHead";
-import Header from "@/components/layout/Header"
-import Footer from "@/components/layout/Footer"
-import SkipLink from '@/components/SkipLink';
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import SkipLink from "@/components/SkipLink";
 
 import { siteConfig } from "@/site-config";
 
 interface Props {
-	meta: SiteMeta
+	meta: SiteMeta;
 }
 
-const { 
-	meta: {
-		title,
-		description = siteConfig.description,
-		ogImage,
-		articleDate
-	}
+const {
+	meta: { title, description = siteConfig.description, ogImage, articleDate },
 } = Astro.props;
 ---
+
 <!DOCTYPE html>
 <html lang={siteConfig.lang}>
 	<head>
-		<BaseHead title={title} description={description} ogImage={ogImage} articleDate={articleDate} />
+		<BaseHead
+			title={title}
+			description={description}
+			ogImage={ogImage}
+			articleDate={articleDate}
+		/>
 		<script define:vars={{ siteConfig }}>
 			const root = document.documentElement;
 
-			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
-			const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const colorThemeMetaTag = document.querySelector(
+				"meta[name='theme-color']"
+			);
+			const colorSchemeQuery = window.matchMedia(
+				"(prefers-color-scheme: dark)"
+			);
 
 			function getLocalStoragePreference() {
-				if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
 					return localStorage.getItem("theme");
 				}
-				return 'system';
+				return "system";
 			}
 
 			let theme = getLocalStoragePreference();
-			if (theme === 'system') {
+			if (theme === "system") {
 				theme = colorSchemeQuery.matches ? "dark" : "light";
 			}
 
 			function toggleTheme() {
-				if (getLocalStoragePreference() !== 'system') {
+				if (getLocalStoragePreference() !== "system") {
 					return;
 				}
 
-				const currentColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
-				const nowIsDark = currentColorMode === 'dark';
+				const currentColorMode = window.matchMedia(
+					"(prefers-color-scheme: dark)"
+				).matches
+					? "dark"
+					: "light";
+				const nowIsDark = currentColorMode === "dark";
 
 				// set the meta attribute
 				colorThemeMetaTag.setAttribute(
@@ -63,7 +75,7 @@ const {
 			const isDark = theme === "dark";
 
 			root.classList.toggle("dark", isDark);
-			colorSchemeQuery.addEventListener('change', toggleTheme);
+			colorSchemeQuery.addEventListener("change", toggleTheme);
 		</script>
 	</head>
 	<body>
