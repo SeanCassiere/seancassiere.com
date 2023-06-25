@@ -7,17 +7,21 @@ const age = getAge("2000-04-01");
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-	<section>
+	<section aria-label="Introduction">
 		<h1 class="title mb-6">Hello World!</h1>
 		<p class="mb-4">
-			Hi there, I'm Sean. I'm {age} y/o and currently pursuing a Master in IT. I
-			like jamming out to hip-hop and venturing on side-projects that are never completed
-			😅. I live in VSCode and have a passion in following open-source web dev technologies.
+			Hi there, I'm Sean Cassiere. I'm {age} y/o and currently pursuing a Master
+			in IT.
+		</p>
+		<p class="mb-4">
+			I like jamming out to hip-hop and venturing on side-projects that are
+			never completed 😅. I live in VSCode and have a passion in following
+			open-source web dev technologies.
 		</p>
 		<p class="mb-4">I'm not doing much right now, come say hi!</p>
 		<SocialList />
 	</section>
-	<section class="mt-16">
+	<section class="mt-16" aria-label="Technology that I love">
 		<h2 class="title mb-4 text-xl">I'm in ❤️ with this tech</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			<li>
