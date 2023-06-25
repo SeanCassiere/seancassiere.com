@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seancassiere.com/sitemap-index.xml
