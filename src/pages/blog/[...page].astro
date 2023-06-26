@@ -8,7 +8,10 @@ import Pagination from "@/components/Paginator";
 import { sortMDByDate } from "@/utils";
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const allPosts = await getCollection("blog");
+	const allPosts = await getCollection(
+		"blog",
+		({ data }) => data.draft !== true
+	);
 	const allPostsByDate = sortMDByDate(allPosts);
 	return paginate(allPostsByDate, { pageSize: 10 });
 }) satisfies GetStaticPaths;

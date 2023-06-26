@@ -9,7 +9,7 @@ interface Props {
 
 const { post } = Astro.props;
 const {
-	data: { title, description, ogImage, publishDate },
+	data: { title, description, ogImage, publishDate, draft },
 	slug,
 } = post;
 const socialImage = ogImage ?? `/og-image/${slug}.png`;
@@ -37,6 +37,18 @@ const { headings } = await post.render();
 </script>
 
 <PageLayout meta={{ title, description, articleDate, ogImage: socialImage }}>
+	{
+		draft && (
+			<blockquote
+				class="my-8 bg-neutral-300 py-4 pl-4 dark:bg-neutral-800"
+				role="alert"
+			>
+				This post is a <strong>draft</strong>. If you're reading this, you're
+				privy to the secret link. Please <strong>don't share</strong> it with
+				anyone.
+			</blockquote>
+		)
+	}
 	<div class="mb-8">
 		<a
 			href="/blog"
