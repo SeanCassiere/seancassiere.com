@@ -39,6 +39,11 @@ export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 		tagLine: "Typescript ORM that let's you love SQL.",
 	},
 	{
+		name: "PlanetScale",
+		link: "https://planetscale.com",
+		tagLine: "A database that brings you scale, performance, and reliability.",
+	},
+	{
 		name: "tRPC",
 		link: "https://trpc.io",
 		tagLine: "End-to-end typesafe APIs made easy.",
