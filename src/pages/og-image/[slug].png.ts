@@ -76,7 +76,7 @@ const markup = (title: string, pubDate: string) => html`<div
 </div>`;
 
 export async function get({ params: { slug } }: APIContext) {
-	const post = await getEntryBySlug("post", slug!);
+	const post = await getEntryBySlug("blog", slug!);
 	const title = post?.data.title ?? siteConfig.title;
 	const postDate = getFormattedDate(post?.data.publishDate ?? Date.now(), {
 		weekday: "long",
@@ -91,7 +91,7 @@ export async function get({ params: { slug } }: APIContext) {
 }
 
 export const getStaticPaths = (async () => {
-	const posts = await getCollection("post");
+	const posts = await getCollection("blog");
 	return posts
 		.filter(({ data }) => !data.ogImage)
 		.map(({ slug }) => ({ params: { slug } }));

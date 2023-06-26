@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import PageLayout from "./PageLayout.astro";
-import PostHero from "@/components/post/PostHero";
+import PostHero from "@/components/blog/PostHero";
 
 interface Props {
-	post: CollectionEntry<"post">;
+	post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
@@ -39,7 +39,7 @@ const { headings } = await post.render();
 <PageLayout meta={{ title, description, articleDate, ogImage: socialImage }}>
 	<div class="mb-8">
 		<a
-			href="/posts"
+			href="/blog"
 			class="py-4 underline-offset-4 sm:py-0 sm:hover:underline"
 			rel="prefetch"
 		>

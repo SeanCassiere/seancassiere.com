@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout";
 import SocialList from "@/components/SocialList";
-import PostPreview from "@/components/post/PostPreview";
+import PostPreview from "@/components/blog/PostPreview";
 import ProjectItem from "@/components/home/ProjectItem";
 import ExcitedTechnologyItem from "@/components/home/ExcitedTechnologyItem";
 import { getAge, sortMDByDate } from "@/utils";
@@ -11,7 +11,7 @@ import { PROJECTS, EXCITED_TECHNOLOGIES } from "@/data/constants";
 const age = getAge("2000-04-01");
 
 const MAX_POSTS = 10;
-const allPosts = await getCollection("post");
+const allPosts = await getCollection("blog");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const projects = PROJECTS;
@@ -32,8 +32,8 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 		</p>
 		<SocialList />
 	</section>
-	<section class="mt-12" aria-label="My projects">
-		<h2 class="title mb-4 text-xl">My projects</h2>
+	<section class="mt-12" aria-label="Projects">
+		<h2 class="title mb-4 text-xl">Projects</h2>
 		<ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			{
 				projects.map((project) => (
@@ -44,12 +44,12 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 			}
 		</ul>
 	</section>
-	<section class="mt-12" aria-label="My blog posts">
-		<h2 class="title mb-4 text-xl">My posts</h2>
+	<section class="mt-12" aria-label="Blog posts">
+		<h2 class="title mb-4 text-xl">Blog</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{
 				allPostsByDate.map((p) => (
-					<li class="flex flex-col gap-x-2 sm:flex-row">
+					<li class="flex flex-col gap-x-2 sm:flex-row-reverse sm:justify-between">
 						<PostPreview post={p} />
 					</li>
 				))
@@ -57,8 +57,8 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 			{
 				allPosts.length > MAX_POSTS && (
 					<li class="pt-4">
-						<a href="/posts" class="cactus-link" rel="prefetch">
-							View all &gt;&gt;
+						<a href="/blog" class="cactus-link" rel="prefetch">
+							All posts →
 						</a>
 					</li>
 				)

@@ -50,14 +50,14 @@ const url = new URL(Astro.request.url);
 				Home
 			</a>
 			<a
-				href="/posts"
+				href="/blog"
 				class="px-4 py-4 underline-offset-4 aria-[current='page']:underline sm:py-0 sm:hover:underline"
-				aria-current={url.pathname.toLowerCase().startsWith("/posts")
+				aria-current={url.pathname.toLowerCase().startsWith("/blog")
 					? "page"
 					: false}
 				rel="prefetch"
 			>
-				Posts
+				Blog
 			</a>
 		</nav>
 	</div>

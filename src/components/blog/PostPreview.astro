@@ -4,7 +4,7 @@ import type { IElement } from "@/data/shared";
 import { getFormattedDate } from "@/utils";
 
 interface Props extends IElement {
-	post: CollectionEntry<"post">;
+	post: CollectionEntry<"blog">;
 	withDesc?: boolean;
 }
 
@@ -16,7 +16,7 @@ const postDate = getFormattedDate(date);
 
 <time datetime={datetime} class="min-w-[120px] text-gray-500">{postDate}</time>
 <Element>
-	<a href={`/posts/${post.slug}`} class="cactus-link" rel="prefetch">
+	<a href={`/blog/${post.slug}`} class="cactus-link" rel="prefetch">
 		{post.data.title}
 	</a>
 </Element>
