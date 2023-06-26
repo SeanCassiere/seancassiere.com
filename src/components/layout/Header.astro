@@ -3,8 +3,6 @@ import { siteConfig } from "@/site-config";
 import ThemeToggle from "../ThemeToggle.astro";
 
 const url = new URL(Astro.request.url);
-
-const basePath = url.pathname.split("/")[1];
 ---
 
 <script>
@@ -54,7 +52,9 @@ const basePath = url.pathname.split("/")[1];
 			<a
 				href="/posts"
 				class="px-4 py-4 underline-offset-4 aria-[current='page']:underline sm:py-0 sm:hover:underline"
-				aria-current={basePath === "posts" ? "page" : false}
+				aria-current={url.pathname.toLowerCase().startsWith("/posts")
+					? "page"
+					: false}
 				rel="prefetch"
 			>
 				Posts
