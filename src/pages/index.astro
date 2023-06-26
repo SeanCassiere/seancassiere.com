@@ -1,9 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout";
 import SocialList from "@/components/SocialList";
-import { getAge } from "@/utils";
+import PostPreview from "@/components/post/PostPreview";
+import { getAge, sortMDByDate } from "@/utils";
 
 const age = getAge("2000-04-01");
+
+const MAX_POSTS = 10;
+const allPosts = await getCollection("post");
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
 <PageLayout meta={{ title: "home" }}>
@@ -20,6 +26,27 @@ const age = getAge("2000-04-01");
 		</p>
 		<p class="mb-4">I'm not doing much right now, come say hi!</p>
 		<SocialList />
+	</section>
+	<section class="mt-16" aria-label="My blog posts">
+		<h2 class="title mb-4 text-xl">My posts</h2>
+		<ul class="space-y-4 sm:space-y-2">
+			{
+				allPostsByDate.map((p) => (
+					<li class="flex flex-col gap-x-2 sm:flex-row">
+						<PostPreview post={p} />
+					</li>
+				))
+			}
+			{
+				allPosts.length > MAX_POSTS && (
+					<li class="pt-4">
+						<a href="/posts" class="cactus-link" rel="prefetch">
+							View all &gt;&gt;
+						</a>
+					</li>
+				)
+			}
+		</ul>
 	</section>
 	<section class="mt-16" aria-label="Technology that I love">
 		<h2 class="title mb-4 text-xl">I'm in ❤️ with this tech</h2>
