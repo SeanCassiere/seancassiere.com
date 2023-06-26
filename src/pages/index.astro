@@ -4,30 +4,32 @@ import PageLayout from "@/layouts/PageLayout";
 import SocialList from "@/components/SocialList";
 import PostPreview from "@/components/post/PostPreview";
 import ProjectItem from "@/components/home/ProjectItem";
+import ExcitedTechnologyItem from "@/components/home/ExcitedTechnologyItem";
 import { getAge, sortMDByDate } from "@/utils";
-import { PROJECTS } from "@/data/constants";
+import { PROJECTS, EXCITED_TECHNOLOGIES } from "@/data/constants";
 
 const age = getAge("2000-04-01");
 
 const MAX_POSTS = 10;
 const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+
 const projects = PROJECTS;
+const excitedTechnologies = EXCITED_TECHNOLOGIES;
 ---
 
 <PageLayout meta={{ title: "home" }}>
 	<section aria-label="Introduction">
 		<h1 class="title mb-6">Hello World!</h1>
 		<p class="mb-4">
-			Hi there, I'm Sean Cassiere. I'm {age} y/o and currently pursuing a Master
-			in IT.
+			Hi there, I'm <span class="font-bold">Sean Cassiere</span>. I'm {age} y/o and
+			currently pursuing a <span class="font-bold"> Master in IT</span>.
 		</p>
 		<p class="mb-4">
-			I like jamming out to hip-hop and venturing on side-projects that are
-			never completed 😅. I live in VSCode and have a passion in following
-			open-source web dev technologies.
+			I like jamming out to tunes on Spotify and venturing on side-projects that
+			are never completed 😅. I live in VSCode and have a passion following
+			open-source technologies.
 		</p>
-		<p class="mb-4">I'm not doing much right now, come say hi!</p>
 		<SocialList />
 	</section>
 	<section class="mt-12" aria-label="My projects">
@@ -66,64 +68,13 @@ const projects = PROJECTS;
 	<section class="mt-12" aria-label="Technology that I love">
 		<h2 class="title mb-4 text-xl">I'm in ❤️ with this tech</h2>
 		<ul class="space-y-4 sm:space-y-2">
-			<li>
-				<a
-					href="https://orm.drizzle.team/"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="cactus-link inline-block"
-					>Drizzle ORM
-				</a>:
-				<p class="inline-block sm:mt-2">
-					Typescript ORM that let's you love SQL.
-				</p>
-			</li>
-			<li>
-				<a
-					href="https://trpc.io"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="cactus-link inline-block"
-					>tRPC
-				</a>:
-				<p class="inline-block sm:mt-2">End-to-end typesafe APIs made easy.</p>
-			</li>
-			<li>
-				<a
-					href="https://tanstack.com/query"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="cactus-link inline-block"
-					>Tanstack Query
-				</a>:
-				<p class="inline-block sm:mt-2">
-					Powerful asynchronous state management for React.
-				</p>
-			</li>
-			<li>
-				<a
-					href="https://tailwindcss.com"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="cactus-link inline-block"
-					>Tailwind CSS
-				</a>:
-				<p class="inline-block sm:mt-2">
-					Rapidly build modern websites without ever leaving your HTML.
-				</p>
-			</li>
-			<li>
-				<a
-					href="https://react.dev"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="cactus-link inline-block"
-					>React
-				</a>:
-				<p class="inline-block sm:mt-2">
-					The library for web and native user interfaces.
-				</p>
-			</li>
+			{
+				excitedTechnologies.map((technology) => (
+					<li>
+						<ExcitedTechnologyItem item={technology} />
+					</li>
+				))
+			}
 		</ul>
 	</section>
 </PageLayout>
