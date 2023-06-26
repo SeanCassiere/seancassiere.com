@@ -1,17 +1,44 @@
 <script>
+	const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+	function getLocalStoragePreference() {
+		if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+			return localStorage.getItem("theme");
+		}
+		return "system";
+	}
+
 	class ThemeToggle extends HTMLElement {
 		constructor() {
 			super();
 			const button = this.querySelector("button") as HTMLButtonElement;
 
-			function setTheme(dark: boolean) {
+			// setting the theme on the button component
+			function setTheme(dark: boolean, setLocalStorage = true) {
 				// set the theme in local storage
-				localStorage.setItem("theme", dark ? "dark" : "light");
+				if (setLocalStorage) {
+					localStorage.setItem("theme", dark ? "dark" : "light");
+				}
 
 				// This could/should be a CustomEvent()
 				document.documentElement.classList.toggle("dark", dark);
 				// set the aria-pressed attribute, dark mode === aria-pressed=true
 				button.setAttribute("aria-pressed", String(dark));
+			}
+
+			// function to change the button theme based on the system theme changing
+			function updateButtonTheme() {
+				const localStorageValue = getLocalStoragePreference();
+				if (localStorageValue !== "system") return;
+
+				const currentColorMode = window.matchMedia(
+					"(prefers-color-scheme: dark)"
+				).matches
+					? "dark"
+					: "light";
+				const nowIsDark = currentColorMode === "dark";
+
+				setTheme(nowIsDark, false);
 			}
 
 			// button clicked, toggle dark mode
@@ -20,6 +47,9 @@
 			// Initalise button state
 			const isDarkAtInit = this.isDark();
 			button.setAttribute("aria-pressed", String(isDarkAtInit));
+
+			// listen for system theme changes
+			colorSchemeQuery.addEventListener("change", updateButtonTheme);
 		}
 
 		// returns if the root element contains the dark class
