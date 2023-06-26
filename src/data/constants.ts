@@ -58,9 +58,4 @@ export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 		link: "https://tailwindcss.com",
 		tagLine: "Rapidly build modern websites without ever leaving your HTML.",
 	},
-	{
-		name: "React",
-		link: "https://react.dev",
-		tagLine: "The library for web and native user interfaces.",
-	},
 ];
