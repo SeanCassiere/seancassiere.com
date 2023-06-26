@@ -1,0 +1,21 @@
+---
+import type { PROJECTS } from "@/data/constants";
+
+type Project = (typeof PROJECTS)[number];
+
+interface Props {
+	item: Project;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="" aria-label={item.name}>
+	<a
+		href={item.link}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="cactus-link mb-4 inline-block">{item.name}</a
+	>
+	<p>{item.description}</p>
+</article>

@@ -3,13 +3,16 @@ import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout";
 import SocialList from "@/components/SocialList";
 import PostPreview from "@/components/post/PostPreview";
+import ProjectItem from "@/components/home/ProjectItem";
 import { getAge, sortMDByDate } from "@/utils";
+import { PROJECTS } from "@/data/constants";
 
 const age = getAge("2000-04-01");
 
 const MAX_POSTS = 10;
 const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+const projects = PROJECTS;
 ---
 
 <PageLayout meta={{ title: "home" }}>
@@ -27,7 +30,19 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 		<p class="mb-4">I'm not doing much right now, come say hi!</p>
 		<SocialList />
 	</section>
-	<section class="mt-16" aria-label="My blog posts">
+	<section class="mt-12" aria-label="My projects">
+		<h2 class="title mb-4 text-xl">My projects</h2>
+		<ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
+			{
+				projects.map((project) => (
+					<li>
+						<ProjectItem item={project} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
+	<section class="mt-12" aria-label="My blog posts">
 		<h2 class="title mb-4 text-xl">My posts</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{
@@ -48,7 +63,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 			}
 		</ul>
 	</section>
-	<section class="mt-16" aria-label="Technology that I love">
+	<section class="mt-12" aria-label="Technology that I love">
 		<h2 class="title mb-4 text-xl">I'm in ❤️ with this tech</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			<li>
