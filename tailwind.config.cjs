@@ -40,6 +40,21 @@ module.exports = {
 						a: {
 							"@apply cactus-link no-underline": "",
 						},
+						"h1 a": {
+							"@apply bg-none hover:bg-none": "",
+						},
+						"h2 a": {
+							"@apply bg-none hover:bg-none": "",
+						},
+						"h3 a": {
+							"@apply bg-none hover:bg-none": "",
+						},
+						"h4 a": {
+							"@apply bg-none hover:bg-none": "",
+						},
+						"h5 a": {
+							"@apply bg-none hover:bg-none": "",
+						},
 						strong: {
 							fontWeight: "700",
 						},

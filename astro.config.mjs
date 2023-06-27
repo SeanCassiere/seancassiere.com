@@ -1,9 +1,11 @@
+import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import tailwind from "@astrojs/tailwind";
-import { defineConfig } from "astro/config";
+import rehypeSlug from "rehype-slug";
+import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +16,15 @@ export default defineConfig({
 			theme: "one-dark-pro",
 			wrap: true,
 		},
+		rehypePlugins: [
+			rehypeSlug,
+			[
+				rehypeAutoLinkHeadings,
+				{
+					behavior: "wrap",
+				},
+			],
+		],
 	},
 	integrations: [
 		mdx(),
