@@ -46,6 +46,7 @@ module.exports = {
 						code: {
 							border: "1px dotted #666",
 							borderRadius: "2px",
+							"@apply font-sans": "",
 						},
 						blockquote: {
 							borderLeftWidth: "none",
