@@ -1,0 +1,97 @@
+---
+title: "My experience creating a React Native app with Expo in 2023"
+publishDate: "2023-06-25"
+description: "A walkthrough of my journey developing a React Native with Expo in 2023"
+draft: false
+---
+
+## Why am I developing an app?
+
+At the time of writing, I'm currently pursuing my Master in IT at the Southern Institute of Technology here in Invercargill, New Zealand.
+
+I'm taking a paper called IT816: Mobile Application Development. The paper is about the development and distribution of mobile apps. As with all development related papers, the technologies being taught are pretty basic, but the lecture let's us choose our own technologies to use for our assignments. **GREAT!!!**
+
+My last assignment for the paper was to develop a "non-trivial" mobile application and publish it to an app store.
+
+As such, I chose to developer a basic car rental management app. The app allows employees of a car rental company to manage their fleet of cars. The app also allows employees to create and close rental contracts by associating cars with customers and all the metadata that transaction generates.
+
+My selection of React Native purely stemmed from the fact that I already had a strong understanding of React and I wanted to learn more about React Native.
+
+## Why Expo?
+
+This requires some explanation. I'm an avid follower of popular tech personality, [Theo](https://www.twitter.com/@t3dotgg), and one of his community driven projects is [create-t3-app](https://create.t3.gg) something I'm a big fan of.
+
+This project is a CLI driven launchpad for spinning up a pre-configured NextJS project with Tailwind, tRPC, and Prisma.
+
+An offshoot of this project is the [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo) repository/template, which takes the philosophy of **create-t3-app** and breaks up the individual components across a monorepo powered by Turborepo, to allow for adding a React Native mobile app to the mix. And as I'm sure you've guessed, the React Native app in this template is powered by Expo.
+
+This is where my journey began... With me cloning template onto my machine and running `pnpm install` to get started.
+
+## What was the overall development experience like?
+
+I'm happy to say that the overall development experience for this project was great.
+
+I did have to make a few changes to the core components template provided by the template such as removing the included `nextjs` app, as I had no need for it, and as such wanted my monorepo to be as lean as possible. I also, wanted to host my backend on [Railway](https://railway.app) because of the [great experience I had with it in the past](/blog/railway-just-made-it-so-easy).
+
+So that brought me to a monorepo with the following components:
+
+<u>Stock components</u>
+
+- app - React Native
+- api - tRPC
+- db - Prisma with Postgres
+- config - eslint and tailwind configurations
+
+<u>Custom components</u>
+
+- auth - custom implementation of multi-tenant authentication & authorization
+- server - a dead simple Fastify server to host on Railway
+- validators - collection of shared zod schemas
+
+## The app development experience like
+
+Although I was quite familiar with React, diving into React Native and mobile app development was a bit of a learning curve.
+
+I was in new waters and I had to learn how to swim. Learning concepts about mobile navigation, native components, and styling was a challenge at first, but I was able to get the hang of it after a few days of tinkering.
+
+Navigation especially was a bit of a challenge. I had to learn about the different types of navigation provided by the `react-navigation` library like the Stack, Drawer, and Tab navigators. On top of that, there was the handling of the authentication states of my app, and how to handle navigation based on that.
+
+I also found a new component library that worked really well with React Native called [NativeBase](https://nativebase.io). It's a component library that provides a set of components built on-top of what React Native ships to provide a consistent experience across platforms. I found it to be a great addition to my app.
+
+## Publishing experience for the app
+
+As great as the development experience was, when it came to publishing the app, I ran into a few issues.
+
+I entirely admit that the problems I faced were quite unique to me, and I don't think the average developer would run into them, but I'll share them anyway.
+
+A bit of background.
+
+I'm a Sri Lankan, who's moved to New Zealand on a Resident Visa. I'll be here in NZ for a minimum of 5 years before I even look at leaving the country. As such, my documentation could easily confuse looking at it as it comprises of my Sri Lankan passport coupled with my NZ Resident Visa.
+
+So, when I signed up on the Google Play Console, they charged me a one-time fee of $25 USD, and then collected my documentation for **identity verification**. This is where the problems started.
+
+It initially took me 4 days to get a response from them stating that my verification request was rejected. I thought, "hmm, that's weird" and concluded that "maybe the person just didn't read the documentation properly". So like any other developer, I resubmitted the request with a note stating that I'm a Sri Lankan living in New Zealand and that I'm here for the long haul.
+
+This went on for another two attempts. At this stage, I was fuming at the ineptitude of the identity verification team at Google. I was also getting a bit worried as I was creeping closer towards the deadline for my assignment. Finally, after a [rant on twitter](https://twitter.com/seancassiere/status/1667128857852530690), and some strongly worded emails, I was able to get my identity verified.
+
+I'm thankful that I was able to get my identity verified, but I'm still a bit annoyed at the whole process. I'm sure that the average developer wouldn't have to go through this, but I'm sure there are other developers out there who have had similar experiences (I have yet to ask my classmates what their ordeals were like).
+
+## Expo comes in clutch
+
+Eventually once my identity has been verified, I was able to publish my app to the Google Play Store. This was a pretty straightforward process. I just had to run the appropriate `eas` command to get my app built and bundled in the cloud.
+
+But as it is with all initial builds, there were a few bugs that I had to fix. Ofcourse I fixed the bugs, but I really was not interested in having to continue this cycle of building, bundling, and publishing. Especially with the whole Google of it all.
+
+In comes expo and eas updates to save the day. It allowed me to be able to configure my app to use `expo` and `eas updates` to ship OTA updates to my app without having to go through the Google Play Store. This was game changer as it allowed me to push out updates to my app without having to go through the whole build, bundle, review, and publish cycle.
+
+## My closing thoughts
+
+Honestly, this experience was great! Sure the whole identity verification process was a bit of a pain, but I'm glad I was able to get through it.
+
+But what do I think of React Native and Expo as a whole? I think it's great! I'm glad I was able to learn a new technology and I'm glad I was able to get a taste of what it's like to develop a mobile app.
+
+On top of all that, using expo-updates showed me how easy it is to ship updates to my app without having to go through the whole review process. Something, which I haven't really found being implemented in other cross-platform frameworks.
+
+So to sum it up, if you're looking to develop a mobile app, I'd highly recommend React Native and Expo. It's a great combination and I'm sure you'll have a great time developing your app.
+
+Oh! and before I forget, go check out the app's [repository (Ping-Rents](https://github.com/SeancCassiere/ping-rents)) on GitHub.
