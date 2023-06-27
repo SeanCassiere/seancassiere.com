@@ -1,0 +1,11 @@
+---
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+const props = Astro.props;
+
+const isInternal = typeof props.href === "string" && props.href.startsWith("/");
+---
+
+<a {...props} target={isInternal ? "_self" : "_blank"}>
+	<slot />
+</a>
