@@ -36,26 +36,12 @@ const {
 				"(prefers-color-scheme: dark)"
 			);
 
-			function getLocalStoragePreference() {
-				if (
-					typeof localStorage !== "undefined" &&
-					localStorage.getItem("theme")
-				) {
-					return localStorage.getItem("theme");
-				}
-				return "system";
-			}
+			theme = colorSchemeQuery.matches ? "dark" : "light";
+			const isDark = theme === "dark";
 
-			let theme = getLocalStoragePreference();
-			if (theme === "system") {
-				theme = colorSchemeQuery.matches ? "dark" : "light";
-			}
+			root.classList.toggle("dark", isDark);
 
 			function toggleTheme() {
-				if (getLocalStoragePreference() !== "system") {
-					return;
-				}
-
 				const currentColorMode = window.matchMedia(
 					"(prefers-color-scheme: dark)"
 				).matches
@@ -71,10 +57,6 @@ const {
 				// toggle the class on the root element
 				root.classList.toggle("dark", nowIsDark);
 			}
-
-			const isDark = theme === "dark";
-
-			root.classList.toggle("dark", isDark);
 			colorSchemeQuery.addEventListener("change", toggleTheme);
 		</script>
 	</head>

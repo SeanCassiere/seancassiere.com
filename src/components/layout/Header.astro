@@ -1,6 +1,5 @@
 ---
 import { siteConfig } from "@/site-config";
-import ThemeToggle from "../ThemeToggle.astro";
 
 const url = new URL(Astro.request.url);
 ---
@@ -25,7 +24,7 @@ const url = new URL(Astro.request.url);
 
 <header
 	id="main-header"
-	class="group relative mb-16 flex items-center"
+	class="group relative mb-16 flex items-center justify-between"
 	aria-label="Header"
 >
 	<div class="flex sm:flex-col">
@@ -61,7 +60,6 @@ const url = new URL(Astro.request.url);
 			</a>
 		</nav>
 	</div>
-	<ThemeToggle />
 	<button
 		id="toggle-navigation-menu"
 		class="group relative ms-8 h-7 w-7 sm:invisible sm:hidden"
