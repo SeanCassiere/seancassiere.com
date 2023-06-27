@@ -9,8 +9,9 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
 	site: "https://seancassiere.com",
 	markdown: {
+		syntaxHighlight: "shiki",
 		shikiConfig: {
-			theme: "dracula",
+			theme: "one-dark-pro",
 			wrap: true,
 		},
 	},
