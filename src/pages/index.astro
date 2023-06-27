@@ -49,7 +49,7 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 		<ul class="space-y-4 sm:space-y-2">
 			{
 				allPostsByDate.map((p) => (
-					<li class="flex flex-col gap-x-2 sm:flex-row-reverse sm:justify-between [&>time]:text-right">
+					<li class="flex flex-col gap-x-2 sm:flex-row-reverse sm:justify-between [&>time]:sm:text-right">
 						<PostPreview post={p} />
 					</li>
 				))
