@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 ---
 
 <footer
-	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top text-gray-500 dark:text-textColor sm:flex-row sm:justify-between sm:text-xs md:pb-8"
+	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top text-gray-500 dark:text-textColor sm:flex-row sm:justify-between sm:text-sm md:pb-8"
 	aria-label="Footer"
 >
 	<div class="me-0 sm:me-4">
@@ -15,6 +15,84 @@ const year = new Date().getFullYear();
 		{siteConfig.siteName}
 	</div>
 	<ul class="flex items-center gap-x-0.5" aria-label="Social links">
+		<li aria-label="Sitemap">
+			<a
+				class="inline-block p-2 sm:hover:text-link"
+				href={SOCIAL_LINKS.sitemap}
+				rel="noopener noreferrer"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-5 w-5"
+					width="44"
+					height="44"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<path
+						d="M3 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M15 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path d="M12 9l0 3"></path>
+				</svg>
+				<span class="sr-only">Sitemap</span>
+			</a>
+		</li>
+		<li aria-label="RSS">
+			<a
+				class="inline-block p-2 sm:hover:text-link"
+				href={SOCIAL_LINKS.rss}
+				rel="noopener noreferrer"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-5 w-5"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path
+						stroke="none"
+						d="M0 0h24v24H0z"
+						fill="none"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M4 4a16 16 0 0 1 16 16"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M4 11a9 9 0 0 1 9 9"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+				</svg>
+				<span class="sr-only">RSS</span>
+			</a>
+		</li>
 		<li aria-label="GitHub">
 			<a
 				class="inline-block p-2 sm:hover:text-link"
@@ -23,7 +101,7 @@ const year = new Date().getFullYear();
 				rel="noopener noreferrer"
 			>
 				<svg
-					class="h-5 w-5 md:h-4 md:w-4"
+					class="h-5 w-5"
 					aria-hidden="true"
 					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +129,7 @@ const year = new Date().getFullYear();
 				rel="noopener noreferrer"
 			>
 				<svg
-					class="h-5 w-5 md:h-4 md:w-4"
+					class="h-5 w-5"
 					aria-hidden="true"
 					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +155,7 @@ const year = new Date().getFullYear();
 				href={`mailto:${SOCIAL_LINKS.email}`}
 			>
 				<svg
-					class="h-5 w-5 md:h-4 md:w-4"
+					class="h-5 w-5"
 					aria-hidden="true"
 					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"

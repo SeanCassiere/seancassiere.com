@@ -2,6 +2,8 @@ export const SOCIAL_LINKS = {
 	github: "https://github.com/SeanCassiere",
 	twitter: "https://twitter.com/SeanCassiere",
 	email: "me@seancassiere.com",
+	rss: "/rss.xml",
+	sitemap: "/sitemap-0.xml",
 };
 
 export type Project = { name: string; link: string; description: string };

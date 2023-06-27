@@ -4,12 +4,53 @@ import { SOCIAL_LINKS } from "@/data/constants";
 // *** SVG icons from https://tablericons.com/ ***
 ---
 
-<div class="flex flex-wrap items-center gap-x-4 sm:items-center">
-	<p>Come and say hi</p>
-	<ul class="flex flex-1 items-center gap-x-2 sm:flex-initial">
-		<li>
+<div
+	class="flex flex-col flex-wrap items-start gap-x-4 gap-y-5 sm:flex-row sm:items-center"
+>
+	<p class="leading-none">You can follow me here</p>
+	<ul class="flex flex-1 items-center gap-x-4 sm:flex-initial">
+		<li class="flex items-center" aria-label="RSS">
 			<a
-				class="inline-block p-2 sm:hover:text-link"
+				class="inline-block sm:hover:text-link"
+				href={SOCIAL_LINKS.rss}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path
+						stroke="none"
+						d="M0 0h24v24H0z"
+						fill="none"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M4 4a16 16 0 0 1 16 16"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M4 11a9 9 0 0 1 9 9"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+				</svg>
+				<span class="sr-only">RSS</span>
+			</a>
+		</li>
+		<li class="flex items-center" aria-label="GitHub">
+			<a
+				class="inline-block sm:hover:text-link"
 				href={SOCIAL_LINKS.github}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -35,9 +76,9 @@ import { SOCIAL_LINKS } from "@/data/constants";
 				<span class="sr-only">Github</span>
 			</a>
 		</li>
-		<li>
+		<li class="flex items-center" aria-label="Twitter">
 			<a
-				class="inline-block p-2 sm:hover:text-link"
+				class="inline-block sm:hover:text-link"
 				href={SOCIAL_LINKS.twitter}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -63,9 +104,9 @@ import { SOCIAL_LINKS } from "@/data/constants";
 				<span class="sr-only">Twitter</span>
 			</a>
 		</li>
-		<li>
+		<li class="flex items-center" aria-label="Email">
 			<a
-				class="inline-block p-2 sm:hover:text-link"
+				class="inline-block sm:hover:text-link"
 				href={`mailto:${SOCIAL_LINKS.email}`}
 			>
 				<svg
