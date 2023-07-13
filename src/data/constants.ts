@@ -36,6 +36,12 @@ export type ExcitedTechnology = { name: string; link: string; tagLine: string };
 
 export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 	{
+		name: "shadcn/ui",
+		link: "https://ui.shadcn.con",
+		tagLine:
+			"Beautifully designed components that you can copy and paste into your apps.",
+	},
+	{
 		name: "Drizzle ORM",
 		link: "https://orm.drizzle.team",
 		tagLine: "Typescript ORM that let's you love SQL.",
