@@ -37,7 +37,7 @@ export type ExcitedTechnology = { name: string; link: string; tagLine: string };
 export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 	{
 		name: "shadcn/ui",
-		link: "https://ui.shadcn.con",
+		link: "https://ui.shadcn.com",
 		tagLine:
 			"Beautifully designed components that you can copy and paste into your apps.",
 	},
