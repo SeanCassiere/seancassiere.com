@@ -47,6 +47,11 @@ export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 		tagLine: "Typescript ORM that let's you love SQL.",
 	},
 	{
+		name: "Tanstack Router",
+		link: "https://tanstack.com/router",
+		tagLine: "Modern and scalable routing for React applications.",
+	},
+	{
 		name: "PlanetScale",
 		link: "https://planetscale.com",
 		tagLine: "A database that brings you scale, performance, and reliability.",
