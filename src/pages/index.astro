@@ -22,8 +22,9 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 	<section aria-label="Introduction">
 		<h1 class="title mb-6">Hello World!</h1>
 		<p class="mb-4">
-			Hi there, I'm <strong>Sean Cassiere</strong>. I'm {age} y/o and currently pursuing
-			a <strong> Master in IT</strong>.
+			Hi there, I'm <strong>Sean Cassiere</strong>. I'm <span
+				id="introduction-age">{age}</span
+			> y/o and currently pursuing a <strong> Master in IT</strong>.
 		</p>
 		<p class="mb-4">
 			I like jamming out to tunes on Spotify and venturing on side-projects that
@@ -77,4 +78,14 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 			}
 		</ul>
 	</section>
+	<script>
+		import { getAge } from "@/utils";
+
+		const ageDomSpan = document.querySelector("#introduction-age");
+
+		if (ageDomSpan) {
+			const ageThisYear = getAge("2000-04-01");
+			ageDomSpan.innerHTML = String(ageThisYear);
+		}
+	</script>
 </PageLayout>
