@@ -17,22 +17,28 @@ const articleDate = publishDate.toISOString();
 ---
 
 <script>
-	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
-	const targetHeader = document.getElementById("blog-hero") as HTMLDivElement;
+	document.addEventListener("astro:load", () => {
+		const scrollBtn =
+			(document.getElementById("to-top-btn") as HTMLButtonElement) || null;
+		const targetHeader =
+			(document.getElementById("blog-hero") as HTMLDivElement) || null;
 
-	function callback(entries: IntersectionObserverEntry[]) {
-		entries.forEach((entry) => {
-			// only show the scroll to top button when the heading is out of view
-			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+		if (!scrollBtn || !targetHeader) return;
+
+		function callback(entries: IntersectionObserverEntry[]) {
+			entries.forEach((entry) => {
+				// only show the scroll to top button when the heading is out of view
+				scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+			});
+		}
+
+		scrollBtn.addEventListener("click", () => {
+			document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
 		});
-	}
 
-	scrollBtn.addEventListener("click", () => {
-		document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+		const observer = new IntersectionObserver(callback);
+		observer.observe(targetHeader);
 	});
-
-	const observer = new IntersectionObserver(callback);
-	observer.observe(targetHeader);
 </script>
 
 <PageLayout meta={{ title, description, articleDate, ogImage: socialImage }}>

@@ -10,9 +10,9 @@ const config = {
 	extends: [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended",
 		"plugin:astro/recommended",
 		"plugin:astro/jsx-a11y-recommended",
+		"plugin:prettier/recommended",
 	],
 	overrides: [
 		{

@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import type { SiteMeta } from "@/data/site-meta";
 import "../styles/global.css";
 import { siteConfig } from "@/site-config";
@@ -8,19 +10,20 @@ type Props = SiteMeta;
 const { title, description, ogImage, articleDate } = Astro.props;
 
 const pathname = Astro.url.pathname;
+
 const titleSeparator = "•";
 const siteTitle =
 	pathname === "/"
 		? `${siteConfig.title} ${titleSeparator} ${title}`
 		: `${title} ${titleSeparator} ${siteConfig.title}`;
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(
 	ogImage ? ogImage : "/social-card.png",
-	Astro.url
+	Astro.url,
 ).href;
 ---
 
-<!-- base -->
 <meta charset="UTF-8" />
 <meta
 	name="viewport"
@@ -28,12 +31,10 @@ const socialImageURL = new URL(
 />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<!-- icons -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<!-- primary meta tags -->
 <title>{siteTitle}</title>
 <meta name="title" content={siteTitle} />
 <meta name="description" content={description} />
@@ -45,10 +46,8 @@ const socialImageURL = new URL(
 	href="/sitemap-0.xml"
 />
 
-<!-- theme colour -->
 <meta name="theme-color" content={siteConfig.themeColorLight} />
 
-<!-- open graph / facebook -->
 <meta property="og:type" content={articleDate ? "article" : "website"} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -67,9 +66,11 @@ const socialImageURL = new URL(
 	)
 }
 
-<!-- twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={socialImageURL} />
+
+<meta name="view-transition" content="same-origin" />
+<ViewTransitions />
