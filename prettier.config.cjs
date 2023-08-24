@@ -6,8 +6,8 @@ module.exports = {
 	tabWidth: 2,
 	useTabs: true,
 	plugins: [
-		require("prettier-plugin-astro"),
-		require("prettier-plugin-tailwindcss") /* Must come last */,
+		require.resolve("prettier-plugin-astro"),
+		require.resolve("prettier-plugin-tailwindcss") /* Must come last */,
 	],
 	pluginSearchDirs: false,
 	overrides: [
