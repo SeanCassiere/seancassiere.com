@@ -13,6 +13,12 @@ const datetime = content.data.publishDate.toISOString();
 const postDate = getFormattedDate(content.data.publishDate, { month: "long" });
 ---
 
-<h1 class="title mb-3 sm:mb-1">{content.data.title}</h1>
-<time datetime={datetime}>{postDate}</time>
-<p class="mt-8">{content.data.description}</p>
+<h1 class="title mb-3 sm:mb-1" transition:name={`post-title-${content.slug}`}>
+	{content.data.title}
+</h1>
+<time datetime={datetime} transition:name={`post-date-${content.slug}`}
+	>{postDate}</time
+>
+<p class="mt-8" transition:name={`post-description-${content.slug}`}>
+	{content.data.description}
+</p>

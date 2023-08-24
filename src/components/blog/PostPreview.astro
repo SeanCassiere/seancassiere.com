@@ -16,11 +16,26 @@ const postDate = getFormattedDate(date);
 
 <time
 	datetime={datetime}
-	class="min-w-[120px] text-gray-500 dark:text-textColor">{postDate}</time
+	class="min-w-[120px] text-gray-500 dark:text-textColor"
+	transition:name={`post-date-${post.slug}`}>{postDate}</time
 >
 <Element>
-	<a href={`/blog/${post.slug}`} class="cactus-link" rel="prefetch">
+	<a
+		href={`/blog/${post.slug}`}
+		class="cactus-link"
+		rel="prefetch"
+		transition:name={`post-title-${post.slug}`}
+	>
 		{post.data.title}
 	</a>
 </Element>
-{withDesc && <q class="line-clamp-3 block italic">{post.data.description}</q>}
+{
+	withDesc && (
+		<q
+			class="line-clamp-3 block italic"
+			transition:name={`post-description-${post.slug}`}
+		>
+			{post.data.description}
+		</q>
+	)
+}
