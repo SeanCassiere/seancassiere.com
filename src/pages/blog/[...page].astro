@@ -2,6 +2,7 @@
 import type { Page, GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+
 import PageLayout from "@/layouts/PageLayout";
 import PostPreview from "@/components/blog/PostPreview";
 import Pagination from "@/components/Paginator";
@@ -10,7 +11,7 @@ import { sortMDByDate } from "@/utils";
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getCollection(
 		"blog",
-		({ data }) => data.draft !== true
+		({ data }) => data.draft !== true,
 	);
 	const allPostsByDate = sortMDByDate(allPosts);
 	return paginate(allPostsByDate, { pageSize: 10 });
@@ -20,7 +21,7 @@ interface Props {
 	page: Page<CollectionEntry<"blog">>;
 }
 
-const { page } = Astro.props;
+const { page } = Astro.props as Props;
 
 const meta = {
 	title: "Posts",

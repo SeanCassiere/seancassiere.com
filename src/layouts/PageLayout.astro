@@ -17,7 +17,7 @@ const {
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={siteConfig.lang}>
 	<head>
 		<BaseHead
@@ -28,15 +28,15 @@ const {
 		/>
 		<script define:vars={{ siteConfig }}>
 			const colorThemeMetaTag = document.querySelector(
-				"meta[name='theme-color']"
+				"meta[name='theme-color']",
 			);
 			const colorSchemeQuery = window.matchMedia(
-				"(prefers-color-scheme: dark)"
+				"(prefers-color-scheme: dark)",
 			);
 
 			function toggleTheme() {
 				const currentColorMode = window.matchMedia(
-					"(prefers-color-scheme: dark)"
+					"(prefers-color-scheme: dark)",
 				).matches
 					? "dark"
 					: "light";
@@ -45,7 +45,7 @@ const {
 				// set the meta attribute
 				colorThemeMetaTag.setAttribute(
 					"content",
-					siteConfig[nowIsDark ? "themeColorDark" : "themeColorLight"]
+					siteConfig[nowIsDark ? "themeColorDark" : "themeColorLight"],
 				);
 			}
 			colorSchemeQuery.addEventListener("change", toggleTheme);

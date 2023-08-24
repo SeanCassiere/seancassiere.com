@@ -9,6 +9,9 @@ import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 
 // https://astro.build/config
 export default defineConfig({
+	experimental: {
+		viewTransitions: true,
+	},
 	site: "https://seancassiere.com",
 	markdown: {
 		syntaxHighlight: "shiki",
