@@ -7,12 +7,13 @@ const url = new URL(Astro.request.url);
 <script>
 	import { toggleClass } from "@/utils";
 
-	document.addEventListener("DOMContentLoaded", () => {
+	let menuOpen = false;
+
+	document.addEventListener("astro:load", () => {
 		const header = document.getElementById("main-header") as HTMLElement;
 		const toggleMenuButton = document.getElementById(
-			"toggle-navigation-menu"
+			"toggle-navigation-menu",
 		) as HTMLButtonElement;
-		let menuOpen = false;
 
 		toggleMenuButton.addEventListener("click", () => {
 			toggleClass(header, "menu-open");
