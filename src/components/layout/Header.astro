@@ -7,9 +7,9 @@ const url = new URL(Astro.request.url);
 <script>
 	import { toggleClass } from "@/utils";
 
-	let menuOpen = false;
-
 	document.addEventListener("astro:page-load", () => {
+		let menuOpen = false;
+
 		const header = document.getElementById("main-header") as HTMLElement;
 		const toggleMenuButton = document.getElementById(
 			"toggle-navigation-menu",
