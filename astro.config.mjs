@@ -29,7 +29,6 @@ export default defineConfig({
 		],
 	},
 	integrations: [mdx(), tailwind(), sitemap(), prefetch()],
-	compressHTML: true,
 	vite: {
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
