@@ -17,7 +17,7 @@ const articleDate = publishDate.toISOString();
 ---
 
 <script>
-	document.addEventListener("astro:load", () => {
+	document.addEventListener("astro:page-load", () => {
 		const scrollBtn =
 			(document.getElementById("to-top-btn") as HTMLButtonElement) || null;
 		const targetHeader =

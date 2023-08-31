@@ -9,7 +9,7 @@ const url = new URL(Astro.request.url);
 
 	let menuOpen = false;
 
-	document.addEventListener("astro:load", () => {
+	document.addEventListener("astro:page-load", () => {
 		const header = document.getElementById("main-header") as HTMLElement;
 		const toggleMenuButton = document.getElementById(
 			"toggle-navigation-menu",

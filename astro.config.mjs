@@ -1,18 +1,16 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 import mdx from "@astrojs/mdx";
-import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import tailwind from "@astrojs/tailwind";
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeSlug from "rehype-slug";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 
 // https://astro.build/config
 export default defineConfig({
-	experimental: {
-		viewTransitions: true,
-	},
 	site: "https://seancassiere.com",
+	image: sharpImageService(),
 	markdown: {
 		syntaxHighlight: "shiki",
 		shikiConfig: {
@@ -21,6 +19,7 @@ export default defineConfig({
 		},
 		rehypePlugins: [
 			rehypeSlug,
+			rehypeHeadingIds,
 			[
 				rehypeAutoLinkHeadings,
 				{
@@ -29,15 +28,7 @@ export default defineConfig({
 			],
 		],
 	},
-	integrations: [
-		mdx(),
-		tailwind(),
-		image({
-			serviceEntryPoint: "@astrojs/image/sharp",
-		}),
-		sitemap(),
-		prefetch(),
-	],
+	integrations: [mdx(), tailwind(), sitemap(), prefetch()],
 	compressHTML: true,
 	vite: {
 		optimizeDeps: {

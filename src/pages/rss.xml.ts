@@ -4,11 +4,11 @@ import { getCollection } from "astro:content";
 import { siteConfig } from "@/site-config";
 import { sortMDByDate } from "@/utils";
 
-export async function get({ site }: APIContext) {
+export async function GET({ site }: APIContext) {
 	const posts = await getCollection("blog", ({ data }) => data.draft !== true);
 	const sortedPosts = sortMDByDate(posts);
 
-	return rss({
+	return await rss({
 		title: `${siteConfig.author}'s blog`,
 		description: "Anything and everything I write about.",
 		site: String(site),
