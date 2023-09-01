@@ -27,6 +27,7 @@
 
 	html {
 		@apply h-full scroll-smooth border-textColor dark:border-textColor;
+		scrollbar-gutter: stable;
 	}
 
 	html body {
