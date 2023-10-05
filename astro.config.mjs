@@ -9,7 +9,7 @@ import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://seancassiere.com",
+	site: "https://seancassiere.com/",
 	image: sharpImageService(),
 	markdown: {
 		syntaxHighlight: "shiki",
