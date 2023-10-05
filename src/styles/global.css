@@ -2,7 +2,6 @@
 
 @layer base {
 	:root {
-		color-scheme: light;
 		--theme-bg: #fafafa;
 		--theme-link: #28b181;
 		--theme-text: #22272a;
@@ -14,7 +13,6 @@
 
 	@media (prefers-color-scheme: dark) {
 		:root {
-			color-scheme: dark;
 			--theme-bg: #1d1f21;
 			--theme-link: #d480aa;
 			--theme-text: #c9cacc;
@@ -23,6 +21,10 @@
 			--theme-quote: #ccffb6;
 			--theme-menu-bg: rgb(29 31 33 / 0.85);
 		}
+	}
+
+	:root {
+		color-scheme: light dark;
 	}
 
 	html {
