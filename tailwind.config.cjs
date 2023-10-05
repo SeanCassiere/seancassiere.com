@@ -134,7 +134,8 @@ module.exports = {
 		plugin(function ({ addComponents }) {
 			addComponents({
 				".themed-link": {
-					"@apply bg-[size:100%_6px] bg-bottom bg-repeat-x text-foreground": {},
+					"@apply bg-[size:100%_6px] bg-bottom font-medium bg-repeat-x text-foreground":
+						{},
 					backgroundImage:
 						"linear-gradient(transparent,transparent 5px,hsl(var(--primary)) 5px,hsl(var(--primary)))",
 					"&:hover": {
