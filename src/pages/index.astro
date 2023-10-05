@@ -13,8 +13,8 @@ import { PROJECTS, EXCITED_TECHNOLOGIES } from "@/data/constants";
 const age = getAge("2000-04-01");
 
 const MAX_POSTS = 5;
-const allPosts = await getCollection("blog", ({ data }) => data.draft !== true);
-const allPostsByDate = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
+const posts = await getCollection("blog", ({ data }) => data.draft !== true);
+const sortedPosts = sortBlogPostsByDate(posts).slice(0, MAX_POSTS);
 
 const projects = PROJECTS;
 const excitedTechnologies = EXCITED_TECHNOLOGIES;
@@ -51,14 +51,14 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 		<h2 class="themed-title mb-4 text-xl">Blog</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{
-				allPostsByDate.map((p) => (
+				sortedPosts.map((p) => (
 					<li class="flex flex-col gap-x-2 sm:flex-row-reverse sm:justify-between [&>time]:sm:text-right">
 						<PostPreview post={p} />
 					</li>
 				))
 			}
 			{
-				allPosts.length > MAX_POSTS && (
+				posts.length > MAX_POSTS && (
 					<li class="pt-4">
 						<a href="/blog" class="themed-link" rel="prefetch">
 							All posts →
