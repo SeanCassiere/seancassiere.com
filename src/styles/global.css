@@ -28,12 +28,12 @@
 	}
 
 	html {
-		@apply h-full scroll-smooth border-textColor dark:border-textColor;
+		@apply h-full scroll-smooth border-textColor;
 		scrollbar-gutter: stable;
 	}
 
 	html body {
-		@apply mx-auto flex h-full max-w-3xl flex-col bg-bgColor px-8 pt-16 font-sans text-base font-normal text-textColor antialiased dark:bg-bgColor dark:text-textColor;
+		@apply mx-auto flex h-full max-w-3xl flex-col bg-bgColor px-8 pt-16 font-sans text-base font-normal text-textColor antialiased;
 	}
 }
 
