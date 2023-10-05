@@ -38,7 +38,7 @@ module.exports = {
 				DEFAULT: {
 					css: {
 						a: {
-							"@apply cactus-link no-underline": "",
+							"@apply themed-link no-underline": "",
 						},
 						"h1 a": {
 							"@apply bg-none hover:bg-none": "",
@@ -100,7 +100,7 @@ module.exports = {
 		require("@tailwindcss/aspect-ratio"),
 		plugin(function ({ addComponents }) {
 			addComponents({
-				".cactus-link": {
+				".themed-link": {
 					"@apply bg-[size:100%_6px] bg-bottom bg-repeat-x": {},
 					backgroundImage:
 						"linear-gradient(transparent,transparent 5px,var(--theme-text) 5px,var(--theme-text))",
