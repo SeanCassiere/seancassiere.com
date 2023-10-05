@@ -45,7 +45,7 @@ const articleDate = publishDate.toISOString();
 	{
 		draft && (
 			<blockquote
-				class="bg-foreground text-background my-8 py-4 pl-4"
+				class="my-8 bg-foreground py-4 pl-4 text-background"
 				role="alert"
 			>
 				This post is a <strong>draft</strong>. If you're reading this, you're
@@ -63,19 +63,19 @@ const articleDate = publishDate.toISOString();
 			← All posts
 		</a>
 	</aside>
-	<article class="flex flex-col gap-y-10 break-words">
+	<article class="flex flex-col gap-y-5 break-words">
 		<div id="blog-hero">
 			<PostHero content={post} />
 		</div>
 		<div
-			class="prose-blog prose-headings:before:text-primary prose prose-headings:scroll-mt-4 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ms-5 prose-headings:before:content-['#'] hover:prose-headings:before:underline hover:prose-headings:before:underline-offset-4 prose-th:before:content-none sm:prose-headings:before:-ms-6 [&>u]:underline-offset-4"
+			class="prose prose-blog prose-headings:scroll-mt-4 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ms-5 prose-headings:before:text-primary prose-headings:before:content-['#'] hover:prose-headings:before:underline hover:prose-headings:before:underline-offset-4 prose-th:before:content-none sm:prose-headings:before:-ms-6 [&>u]:underline-offset-4"
 		>
 			<slot />
 		</div>
 	</article>
 	<button
 		id="to-top-btn"
-		class="z-90 text-background hover:border-border focus-visible:border-border fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-accent text-3xl opacity-0 outline-none transition-all duration-300 focus-within:outline-none focus-visible:outline-none data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12"
+		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-accent text-3xl text-background opacity-0 outline-none transition-all duration-300 focus-within:outline-none hover:border-border focus-visible:border-border focus-visible:outline-none data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12"
 		aria-label="Back to Top"
 		data-show="false"
 		><svg

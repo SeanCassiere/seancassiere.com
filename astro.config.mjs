@@ -20,7 +20,7 @@ export default defineConfig({
 			wrap: true,
 		},
 		remarkPlugins: [
-			remarkToc,
+			[remarkToc, { ordered: true }],
 			[
 				remarkCollapse,
 				{
