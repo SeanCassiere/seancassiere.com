@@ -26,30 +26,6 @@ const {
 			ogImage={ogImage}
 			articleDate={articleDate}
 		/>
-		<script define:vars={{ siteConfig }}>
-			const colorThemeMetaTag = document.querySelector(
-				"meta[name='theme-color']",
-			);
-			const colorSchemeQuery = window.matchMedia(
-				"(prefers-color-scheme: dark)",
-			);
-
-			function toggleTheme() {
-				const currentColorMode = window.matchMedia(
-					"(prefers-color-scheme: dark)",
-				).matches
-					? "dark"
-					: "light";
-				const nowIsDark = currentColorMode === "dark";
-
-				// set the meta attribute
-				colorThemeMetaTag.setAttribute(
-					"content",
-					siteConfig[nowIsDark ? "themeColorDark" : "themeColorLight"],
-				);
-			}
-			colorSchemeQuery.addEventListener("change", toggleTheme);
-		</script>
 	</head>
 	<body>
 		<SkipLink />
