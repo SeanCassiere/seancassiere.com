@@ -4,10 +4,14 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import tailwind from "@astrojs/tailwind";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+
 import rehypeSlug from "rehype-slug";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
+
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
+
+const POSTS_TOC_HEADING = "Table of contents";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,11 +24,12 @@ export default defineConfig({
 			wrap: true,
 		},
 		remarkPlugins: [
-			[remarkToc, { ordered: true }],
+			[remarkToc, { ordered: true, heading: POSTS_TOC_HEADING }],
 			[
 				remarkCollapse,
 				{
-					test: "Table of contents",
+					test: POSTS_TOC_HEADING,
+					summary: "View the structure of this article",
 				},
 			],
 		],
