@@ -12,7 +12,7 @@ const {
 	data: { title, description, ogImage, publishDate, draft },
 	slug,
 } = post;
-const socialImage = ogImage ?? `/og-image/${slug}.png`;
+const socialImage = ogImage ?? `/og/${slug}.png`;
 const articleDate = publishDate.toISOString();
 ---
 
