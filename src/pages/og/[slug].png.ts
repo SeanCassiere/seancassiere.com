@@ -9,7 +9,7 @@ import { html } from "satori-html";
 import { Resvg } from "@resvg/resvg-js";
 
 import { siteConfig } from "@/site-config";
-import { getFormattedDate } from "@/utils";
+import { getFormattedDate } from "@/utils/dates";
 
 const AssetDir = resolve("src", "assets");
 const RobotoMonoPath = join(AssetDir, "roboto-mono-regular.ttf");

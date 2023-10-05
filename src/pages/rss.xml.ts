@@ -2,11 +2,11 @@ import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
 import { siteConfig } from "@/site-config";
-import { sortMDByDate } from "@/utils";
+import { sortBlogPostsByDate } from "@/utils/content";
 
 export async function GET({ site }: APIContext) {
 	const posts = await getCollection("blog", ({ data }) => data.draft !== true);
-	const sortedPosts = sortMDByDate(posts);
+	const sortedPosts = sortBlogPostsByDate(posts);
 
 	return await rss({
 		title: `${siteConfig.author}'s blog`,

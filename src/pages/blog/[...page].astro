@@ -6,15 +6,12 @@ import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout";
 import PostPreview from "@/components/blog/PostPreview";
 import Pagination from "@/components/Paginator";
-import { sortMDByDate } from "@/utils";
+import { sortBlogPostsByDate } from "@/utils/content";
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const allPosts = await getCollection(
-		"blog",
-		({ data }) => data.draft !== true,
-	);
-	const allPostsByDate = sortMDByDate(allPosts);
-	return paginate(allPostsByDate, { pageSize: 10 });
+	const posts = await getCollection("blog", ({ data }) => data.draft !== true);
+	const sortedPosts = sortBlogPostsByDate(posts);
+	return paginate(sortedPosts, { pageSize: 10 });
 }) satisfies GetStaticPaths;
 
 interface Props {
@@ -32,13 +29,13 @@ const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
 			url: page.url.prev,
-			text: `← Previous Posts`,
+			text: `← Previous`,
 		},
 	}),
 	...(page.url.next && {
 		nextUrl: {
 			url: page.url.next,
-			text: `Next Posts →`,
+			text: `Next →`,
 		},
 	}),
 };

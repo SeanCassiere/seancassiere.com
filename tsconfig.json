@@ -3,11 +3,12 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/data/*": ["src/data/*"],
+			"@/assets/*": ["src/assets/*"],
 			"@/components/*": ["src/components/*.astro"],
+			"@/data/*": ["src/data/*"],
 			"@/layouts/*": ["src/layouts/*.astro"],
 			"@/site-config": ["src/site.config.ts"],
-			"@/utils": ["src/utils/index.ts"]
+			"@/utils/*": ["src/utils/*"]
 		}
 	},
 	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
