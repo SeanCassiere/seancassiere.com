@@ -6,14 +6,14 @@ import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout";
 import PostPreview from "@/components/blog/PostPreview";
 import Pagination from "@/components/Paginator";
-import { sortMDByDate } from "@/utils";
+import { sortBlogPostsByDate } from "@/utils/content";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getCollection(
 		"blog",
 		({ data }) => data.draft !== true,
 	);
-	const allPostsByDate = sortMDByDate(allPosts);
+	const allPostsByDate = sortBlogPostsByDate(allPosts);
 	return paginate(allPostsByDate, { pageSize: 10 });
 }) satisfies GetStaticPaths;
 

@@ -6,14 +6,15 @@ import SocialList from "@/components/SocialList";
 import PostPreview from "@/components/blog/PostPreview";
 import ProjectItem from "@/components/home/ProjectItem";
 import ExcitedTechnologyItem from "@/components/home/ExcitedTechnologyItem";
-import { getAge, sortMDByDate } from "@/utils";
+import { getAge } from "@/utils/dates";
+import { sortBlogPostsByDate } from "@/utils/content";
 import { PROJECTS, EXCITED_TECHNOLOGIES } from "@/data/constants";
 
 const age = getAge("2000-04-01");
 
 const MAX_POSTS = 5;
 const allPosts = await getCollection("blog", ({ data }) => data.draft !== true);
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+const allPostsByDate = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 
 const projects = PROJECTS;
 const excitedTechnologies = EXCITED_TECHNOLOGIES;
@@ -80,7 +81,7 @@ const excitedTechnologies = EXCITED_TECHNOLOGIES;
 		</ul>
 	</section>
 	<script>
-		import { getAge } from "@/utils";
+		import { getAge } from "@/utils/dates";
 
 		const ageDomSpan = document.querySelector("#introduction-age");
 

@@ -1,3 +1,3 @@
 export * from "./dom";
 export * from "./dates";
-export * from "./blog";
+export * from "./content";

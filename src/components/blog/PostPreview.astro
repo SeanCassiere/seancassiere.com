@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import type { IElement } from "@/data/shared";
-import { getFormattedDate } from "@/utils";
+import { getFormattedDate } from "@/utils/dates";
 
 interface Props extends IElement {
 	post: CollectionEntry<"blog">;
@@ -16,7 +16,7 @@ const postDate = getFormattedDate(date);
 
 <time
 	datetime={datetime}
-	class="text-foreground min-w-[120px]"
+	class="min-w-[120px] text-foreground"
 	transition:name={`post-date-${post.slug}`}>{postDate}</time
 >
 <Element>
