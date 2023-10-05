@@ -16,13 +16,13 @@ const postDate = getFormattedDate(date);
 
 <time
 	datetime={datetime}
-	class="min-w-[120px] text-gray-500 dark:text-textColor"
+	class="text-foreground min-w-[120px]"
 	transition:name={`post-date-${post.slug}`}>{postDate}</time
 >
 <Element>
 	<a
 		href={`/blog/${post.slug}`}
-		class="cactus-link"
+		class="themed-link inline-block"
 		rel="prefetch"
 		transition:name={`post-title-${post.slug}`}
 	>

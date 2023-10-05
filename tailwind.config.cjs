@@ -8,11 +8,44 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				bgColor: "var(--theme-bg)",
-				textColor: "var(--theme-text)",
-				link: "var(--theme-link)",
-				accent: "var(--theme-accent)",
-				"accent-2": "var(--theme-accent-2)",
+				border: "hsl(var(--border))",
+				input: "hsl(var(--input))",
+				ring: "hsl(var(--ring))",
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
+				primary: {
+					DEFAULT: "hsl(var(--primary))",
+					foreground: "hsl(var(--primary-foreground))",
+				},
+				secondary: {
+					DEFAULT: "hsl(var(--secondary))",
+					foreground: "hsl(var(--secondary-foreground))",
+				},
+				destructive: {
+					DEFAULT: "hsl(var(--destructive))",
+					foreground: "hsl(var(--destructive-foreground))",
+				},
+				muted: {
+					DEFAULT: "hsl(var(--muted))",
+					foreground: "hsl(var(--muted-foreground))",
+				},
+				accent: {
+					DEFAULT: "hsl(var(--accent))",
+					foreground: "hsl(var(--accent-foreground))",
+				},
+				popover: {
+					DEFAULT: "hsl(var(--popover))",
+					foreground: "hsl(var(--popover-foreground))",
+				},
+				card: {
+					DEFAULT: "hsl(var(--card))",
+					foreground: "hsl(var(--card-foreground))",
+				},
+			},
+			borderRadius: {
+				lg: "var(--radius)",
+				md: "calc(var(--radius) - 2px)",
+				sm: "calc(var(--radius) - 4px)",
 			},
 			fontFamily: {
 				sans: [...fontFamily.sans],
@@ -22,23 +55,23 @@ module.exports = {
 				height: "height",
 			},
 			typography: (theme) => ({
-				cactus: {
+				blog: {
 					css: {
-						"--tw-prose-body": "var(--theme-text)",
-						"--tw-prose-headings": "var(--theme-accent-2)",
-						"--tw-prose-links": "var(--theme-text)",
-						"--tw-prose-bold": "var(--theme-text)",
-						"--tw-prose-bullets": "var(--theme-text)",
-						"--tw-prose-quotes": "var(--theme-quote)",
-						"--tw-prose-code": "var(--theme-text)",
-						"--tw-prose-hr": "0.5px dashed #666",
-						"--tw-prose-th-borders": "#666",
+						"--tw-prose-body": "text-foreground",
+						"--tw-prose-headings": "text-foreground",
+						"--tw-prose-links": "text-foreground",
+						"--tw-prose-bold": "text-foreground",
+						"--tw-prose-bullets": "text-foreground",
+						"--tw-prose-quotes": "text-accent",
+						"--tw-prose-code": "text-foreground",
+						"--tw-prose-hr": "0.5px dashed hsl(var(--border))",
+						"--tw-prose-th-borders": "border-border",
 					},
 				},
 				DEFAULT: {
 					css: {
 						a: {
-							"@apply cactus-link no-underline": "",
+							"@apply themed-link no-underline": "",
 						},
 						"h1 a": {
 							"@apply bg-none hover:bg-none": "",
@@ -59,7 +92,7 @@ module.exports = {
 							fontWeight: "700",
 						},
 						code: {
-							border: "1px dotted #666",
+							border: "1px dotted hsl(var(--border))",
 							borderRadius: "2px",
 							"@apply font-sans": "",
 						},
@@ -74,13 +107,13 @@ module.exports = {
 						},
 						"thead th": {
 							fontWeight: "700",
-							borderBottom: "1px dashed #666",
+							borderBottom: "1px dashed hsl(var(--border))",
 						},
 						"tbody tr": {
 							borderBottomWidth: "none",
 						},
 						tfoot: {
-							borderTop: "1px dashed #666",
+							borderTop: "1px dashed hsl(var(--border))",
 						},
 					},
 				},
@@ -100,17 +133,18 @@ module.exports = {
 		require("@tailwindcss/aspect-ratio"),
 		plugin(function ({ addComponents }) {
 			addComponents({
-				".cactus-link": {
-					"@apply bg-[size:100%_6px] bg-bottom bg-repeat-x": {},
+				".themed-link": {
+					"@apply bg-[size:100%_6px] bg-bottom font-medium bg-repeat-x text-foreground":
+						{},
 					backgroundImage:
-						"linear-gradient(transparent,transparent 5px,var(--theme-text) 5px,var(--theme-text))",
+						"linear-gradient(transparent,transparent 5px,hsl(var(--primary)) 5px,hsl(var(--primary)))",
 					"&:hover": {
 						backgroundImage:
-							"linear-gradient(transparent,transparent 4px,var(--theme-link) 4px,var(--theme-link))",
+							"linear-gradient(transparent,transparent 4px,hsl(var(--accent)) 4px,hsl(var(--accent)))",
 					},
 				},
-				".title": {
-					"@apply text-2xl font-semibold text-accent-2": {},
+				".themed-title": {
+					"@apply text-2xl font-semibold text-foreground": {},
 				},
 			});
 		}),

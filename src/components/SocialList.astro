@@ -8,10 +8,12 @@ import { SOCIAL_LINKS } from "@/data/constants";
 	class="flex flex-col flex-wrap items-start gap-x-4 gap-y-5 sm:flex-row sm:items-center"
 >
 	<p class="leading-none">You can follow me here</p>
-	<ul class="flex flex-1 items-center gap-x-4 sm:flex-initial">
+	<ul
+		class="flex flex-1 items-center gap-x-4 transition-colors sm:flex-initial"
+	>
 		<li class="flex items-center" aria-label="RSS">
 			<a
-				class="inline-block sm:hover:text-link"
+				class="inline-block sm:hover:text-accent"
 				href={SOCIAL_LINKS.rss}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -50,7 +52,7 @@ import { SOCIAL_LINKS } from "@/data/constants";
 		</li>
 		<li class="flex items-center" aria-label="GitHub">
 			<a
-				class="inline-block sm:hover:text-link"
+				class="inline-block sm:hover:text-accent"
 				href={SOCIAL_LINKS.github}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -78,7 +80,7 @@ import { SOCIAL_LINKS } from "@/data/constants";
 		</li>
 		<li class="flex items-center" aria-label="Twitter">
 			<a
-				class="inline-block sm:hover:text-link"
+				class="inline-block sm:hover:text-accent"
 				href={SOCIAL_LINKS.twitter}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -106,7 +108,7 @@ import { SOCIAL_LINKS } from "@/data/constants";
 		</li>
 		<li class="flex items-center" aria-label="Email">
 			<a
-				class="inline-block sm:hover:text-link"
+				class="inline-block sm:hover:text-accent"
 				href={`mailto:${SOCIAL_LINKS.email}`}
 			>
 				<svg
