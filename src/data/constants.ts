@@ -1,6 +1,7 @@
 export const SOCIAL_LINKS = {
 	github: "https://github.com/SeanCassiere",
 	twitter: "https://twitter.com/SeanCassiere",
+	linkedin: "https://www.linkedin.com/in/seancassiere/",
 	email: "me@seancassiere.com",
 	rss: "/rss.xml",
 	sitemap: "/sitemap-0.xml",
