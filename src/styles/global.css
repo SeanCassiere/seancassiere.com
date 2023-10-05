@@ -53,12 +53,12 @@
 	}
 
 	html {
-		@apply border-border h-full scroll-smooth;
+		@apply h-full scroll-smooth border-border selection:bg-primary/50;
 		scrollbar-gutter: stable;
 	}
 
 	html body {
-		@apply bg-background text-foreground mx-auto flex h-full max-w-3xl flex-col px-8 pt-16 font-sans text-base font-normal antialiased;
+		@apply mx-auto flex h-full max-w-3xl flex-col bg-background px-8 pt-16 font-sans text-base font-normal text-foreground antialiased;
 	}
 }
 
