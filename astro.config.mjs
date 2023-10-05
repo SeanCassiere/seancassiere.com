@@ -6,6 +6,8 @@ import tailwind from "@astrojs/tailwind";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeSlug from "rehype-slug";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
+import remarkToc from "remark-toc";
+import remarkCollapse from "remark-collapse";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +19,15 @@ export default defineConfig({
 			theme: "one-dark-pro",
 			wrap: true,
 		},
+		remarkPlugins: [
+			remarkToc,
+			[
+				remarkCollapse,
+				{
+					test: "Table of contents",
+				},
+			],
+		],
 		rehypePlugins: [
 			rehypeSlug,
 			rehypeHeadingIds,
