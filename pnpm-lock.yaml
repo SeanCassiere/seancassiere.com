@@ -91,6 +91,9 @@ devDependencies:
   rehype-slug:
     specifier: ^6.0.0
     version: 6.0.0
+  remark-code-title:
+    specifier: ^0.2.5
+    version: 0.2.5
   remark-collapse:
     specifier: ^0.1.2
     version: 0.1.2
@@ -4627,6 +4630,12 @@ packages:
       rehype-parse: 8.0.5
       rehype-stringify: 9.0.4
       unified: 10.1.2
+
+  /remark-code-title@0.2.5:
+    resolution: {integrity: sha512-6tIhdZdECMM0EQk3eDFxUQn/97VKKmo7JkCwfg/mkJaZZBwH+cbP0UDRslOqqzLcueakPZ8q7Gtj5KtGB/jufw==}
+    dependencies:
+      unist-util-visit: 4.1.2
+    dev: true
 
   /remark-collapse@0.1.2:
     resolution: {integrity: sha512-x2lhtaT4nR1Tkp/hftoeiMHbdAntxu5Q9D6lymwMqUtoF2pg3bqNaa8NO/8yyOVhddYk0d0dkhGc+avGUf0lZA==}

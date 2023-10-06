@@ -68,7 +68,7 @@ const articleDate = publishDate.toISOString();
 			<PostHero content={post} />
 		</div>
 		<div
-			class="prose prose-blog prose-headings:scroll-mt-4 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ms-5 prose-headings:before:text-primary prose-headings:before:content-['#'] hover:prose-headings:before:underline hover:prose-headings:before:underline-offset-4 prose-th:before:content-none sm:prose-headings:before:-ms-6 [&>u]:underline-offset-4"
+			class="prose prose-blog prose-headings:scroll-mt-4 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ms-5 prose-headings:before:text-primary prose-headings:before:content-['#'] hover:prose-headings:before:underline hover:prose-headings:before:underline-offset-4 prose-th:before:content-none sm:prose-headings:before:-ms-6 [&>u]:underline-offset-4 [&_div[data-remark-code-title]+pre]:mt-0 [&_div[data-remark-code-title]+pre]:rounded-t-none [&_div[data-remark-code-title]]:mt-6 [&_div[data-remark-code-title]]:rounded-t [&_div[data-remark-code-title]]:bg-muted-foreground [&_div[data-remark-code-title]]:px-4 [&_div[data-remark-code-title]]:py-1.5 [&_div[data-remark-code-title]]:text-sm"
 		>
 			<slot />
 		</div>

@@ -10,6 +10,7 @@ import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
+import remarkCodeTitle from "remark-code-title";
 
 const POSTS_TOC_HEADING = "Table of contents";
 
@@ -32,6 +33,7 @@ export default defineConfig({
 					summary: "View the structure of this article",
 				},
 			],
+			remarkCodeTitle,
 		],
 		rehypePlugins: [
 			rehypeSlug,
