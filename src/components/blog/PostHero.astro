@@ -19,9 +19,9 @@ const postDate = getFormattedDate(content.data.publishDate, { month: "long" });
 >
 	{content.data.title}
 </h1>
-<time datetime={datetime} transition:name={`post-date-${content.slug}`}
-	>{postDate}</time
->
-<p class="mt-8" transition:name={`post-description-${content.slug}`}>
+<time datetime={datetime} transition:name={`post-date-${content.slug}`}>
+	{postDate}
+</time>
+<p class="mt-8">
 	{content.data.description}
 </p>

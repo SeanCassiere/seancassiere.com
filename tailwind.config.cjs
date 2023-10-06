@@ -134,13 +134,12 @@ module.exports = {
 		plugin(function ({ addComponents }) {
 			addComponents({
 				".themed-link": {
-					"@apply bg-[size:100%_6px] bg-bottom font-medium bg-repeat-x text-foreground":
-						{},
+					"@apply bg-[size:100%_6px] bg-bottom font-medium bg-repeat-x": {},
 					backgroundImage:
-						"linear-gradient(transparent,transparent 5px,hsl(var(--primary)) 5px,hsl(var(--primary)))",
+						"linear-gradient(transparent,transparent 5px,hsl(var(--secondary-foreground)) 5px,hsl(var(--secondary-foreground)))",
 					"&:hover": {
 						backgroundImage:
-							"linear-gradient(transparent,transparent 4px,hsl(var(--accent)) 4px,hsl(var(--accent)))",
+							"linear-gradient(transparent,transparent 4px,hsl(var(--primary)) 4px,hsl(var(--primary)))",
 					},
 				},
 				".themed-title": {

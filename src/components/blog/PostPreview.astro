@@ -5,10 +5,9 @@ import { getFormattedDate } from "@/utils/dates";
 
 interface Props extends IElement {
 	post: CollectionEntry<"blog">;
-	withDesc?: boolean;
 }
 
-const { post, as: Element = "div", withDesc = false } = Astro.props;
+const { post, as: Element = "div" } = Astro.props;
 const date = new Date(post.data.publishDate);
 const datetime = date.toISOString();
 const postDate = getFormattedDate(date);
@@ -17,8 +16,10 @@ const postDate = getFormattedDate(date);
 <time
 	datetime={datetime}
 	class="min-w-[120px] text-foreground"
-	transition:name={`post-date-${post.slug}`}>{postDate}</time
+	transition:name={`post-date-${post.slug}`}
 >
+	{postDate}
+</time>
 <Element>
 	<a
 		href={`/blog/${post.slug}`}
@@ -29,13 +30,3 @@ const postDate = getFormattedDate(date);
 		{post.data.title}
 	</a>
 </Element>
-{
-	withDesc && (
-		<q
-			class="line-clamp-3 block italic"
-			transition:name={`post-description-${post.slug}`}
-		>
-			{post.data.description}
-		</q>
-	)
-}
