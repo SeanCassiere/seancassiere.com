@@ -24,6 +24,7 @@ export default defineConfig({
 			theme: "one-dark-pro",
 			wrap: true,
 		},
+		gfm: true,
 		remarkPlugins: [
 			[remarkToc, { ordered: true, heading: POSTS_TOC_HEADING }],
 			[
