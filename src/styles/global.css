@@ -58,7 +58,7 @@
 	}
 
 	html body {
-		@apply mx-auto flex h-full max-w-3xl flex-col bg-background px-8 pt-16 font-sans text-base font-normal text-foreground antialiased;
+		@apply mx-auto flex h-full max-w-3xl flex-col bg-background px-6 pt-16 font-sans text-base font-normal text-foreground antialiased sm:px-8 sm:pt-24;
 	}
 }
 
