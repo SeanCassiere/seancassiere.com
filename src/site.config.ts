@@ -1,4 +1,5 @@
 interface SiteConfig {
+	short_url: string;
 	title: string;
 	author: string;
 	description: string;
@@ -12,6 +13,7 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
+	short_url: "seancassiere.com",
 	author: "Sean Cassiere",
 	siteName: "SeanCassiere",
 	title: "SeanCassiere",
