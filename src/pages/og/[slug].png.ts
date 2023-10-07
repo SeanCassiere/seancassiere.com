@@ -35,6 +35,10 @@ const ogOptions: SatoriOptions = {
 			style: "normal",
 		},
 	],
+	graphemeImages: {
+		"👋🏼": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f44b-1f3fc.svg",
+		"🚀": "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f680.svg",
+	},
 };
 
 const markup = (title: string, pubDate: string) =>
