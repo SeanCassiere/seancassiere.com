@@ -17,6 +17,7 @@ export async function GET({ site }: APIContext) {
 			description: post.data.description,
 			pubDate: post.data.publishDate,
 			link: `/blog/${post.slug}`,
+			author: siteConfig.author,
 		})),
 		customData: "<language>en-gb</language>",
 	});
