@@ -1,7 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import PageLayout from "./PageLayout.astro";
+
 import PostHero from "@/components/blog/PostHero";
+
+import PageLayout from "@/layouts/PageLayout";
 
 interface Props {
 	post: CollectionEntry<"blog">;
@@ -75,7 +77,7 @@ const articleDate = publishDate.toISOString();
 	</article>
 	<button
 		id="to-top-btn"
-		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-accent text-3xl text-background opacity-0 outline-none transition-all duration-300 focus-within:outline-none hover:border-border focus-visible:border-border focus-visible:outline-none data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12"
+		class="z-90 fixed bottom-8 end-4 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-accent text-3xl text-background opacity-0 outline-none transition-all duration-300 focus-within:outline-none hover:border-border focus-visible:border-border focus-visible:outline-none data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8"
 		aria-label="Back to Top"
 		data-show="false"
 		><svg

@@ -1,5 +1,10 @@
-/** @type {import("@types/prettier").Options} */
-module.exports = {
+/** @typedef  {import("prettier").Config} PrettierConfig */
+/** @typedef {import("prettier-plugin-tailwindcss").PluginOptions} TailwindConfig */
+/** @typedef {import("prettier-plugin-astro").PluginOptions} AstroConfig */
+/** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PrettierConfig} SortImportsConfig */
+
+/** @type { PrettierConfig  | TailwindConfig | AstroConfig | SortImportsConfig } */
+const config = {
 	printWidth: 80,
 	semi: true,
 	singleQuote: false,
@@ -7,6 +12,7 @@ module.exports = {
 	useTabs: true,
 	plugins: [
 		require.resolve("prettier-plugin-astro"),
+		require.resolve("@ianvs/prettier-plugin-sort-imports"),
 		require.resolve("prettier-plugin-tailwindcss") /* Must come last */,
 	],
 	overrides: [
@@ -17,4 +23,22 @@ module.exports = {
 			},
 		},
 	],
+	importOrder: [
+		"^(astro/(.*)$)|^(astro$)|^(astro:(.*)$)",
+		"<THIRD_PARTY_MODULES>",
+		"",
+		"^@/components/(.*)$",
+		"",
+		"^@/layouts/(.*)$",
+		"",
+		"^@/utils/(.*)$",
+		"",
+		"^@/(.*)$",
+		"",
+		"^~/",
+		"^[../]",
+		"^[./]",
+	],
 };
+
+module.exports = config;
