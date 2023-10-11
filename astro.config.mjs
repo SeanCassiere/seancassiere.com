@@ -1,16 +1,14 @@
 import { defineConfig, sharpImageService } from "astro/config";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import prefetch from "@astrojs/prefetch";
-import tailwind from "@astrojs/tailwind";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
-
-import rehypeSlug from "rehype-slug";
+import mdx from "@astrojs/mdx";
+import prefetch from "@astrojs/prefetch";
+import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
-
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
+import rehypeSlug from "rehype-slug";
 import remarkCodeTitle from "remark-code-title";
+import remarkCollapse from "remark-collapse";
+import remarkToc from "remark-toc";
 
 const POSTS_TOC_HEADING = "Table of contents";
 

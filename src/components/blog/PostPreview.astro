@@ -1,7 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { IElement } from "@/data/shared";
+
 import { getFormattedDate } from "@/utils/dates";
+
+import type { IElement } from "@/data/shared";
 
 interface Props extends IElement {
 	post: CollectionEntry<"blog">;

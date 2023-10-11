@@ -1,15 +1,14 @@
-import type { APIContext, GetStaticPaths } from "astro";
-import { getCollection, getEntryBySlug } from "astro:content";
-
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-
+import type { APIContext, GetStaticPaths } from "astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+import { Resvg } from "@resvg/resvg-js";
 import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
-import { Resvg } from "@resvg/resvg-js";
+
+import { getFormattedDate } from "@/utils/dates";
 
 import { siteConfig } from "@/site-config";
-import { getFormattedDate } from "@/utils/dates";
 
 const AssetDir = resolve("src", "assets");
 const RobotoMonoPath = join(AssetDir, "roboto-mono-regular.ttf");
