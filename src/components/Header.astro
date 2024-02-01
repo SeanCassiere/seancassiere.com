@@ -45,7 +45,7 @@ const url = new URL(Astro.request.url);
 				href="/"
 				class="px-4 py-4 underline-offset-4 aria-[current='page']:underline sm:py-0 sm:hover:underline"
 				aria-current={url.pathname === "/" ? "page" : false}
-				rel="prefetch"
+				data-astro-prefetch
 			>
 				Home
 			</a>
@@ -55,7 +55,7 @@ const url = new URL(Astro.request.url);
 				aria-current={url.pathname.toLowerCase().startsWith("/blog")
 					? "page"
 					: false}
-				rel="prefetch"
+				data-astro-prefetch
 			>
 				Blog
 			</a>

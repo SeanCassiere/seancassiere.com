@@ -26,8 +26,8 @@ const postDate = getFormattedDate(date);
 	<a
 		href={`/blog/${post.slug}`}
 		class="themed-link inline-block"
-		rel="prefetch"
 		transition:name={`post-title-${post.slug}`}
+		data-astro-prefetch
 	>
 		{post.data.title}
 	</a>
