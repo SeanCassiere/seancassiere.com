@@ -11,17 +11,16 @@
 		"format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,md,json,astro}' --config ./prettier.config.cjs"
 	},
 	"dependencies": {
-		"@astrojs/prefetch": "^0.4.0",
-		"@astrojs/rss": "^3.0.0",
-		"astro": "^3.2.0",
+		"@astrojs/rss": "^4.0.4",
+		"astro": "^4.3.0",
 		"satori": "^0.10.8",
 		"satori-html": "^0.3.2",
 		"sharp": "^0.32.6"
 	},
 	"devDependencies": {
-		"@astrojs/markdown-remark": "^3.2.0",
-		"@astrojs/mdx": "^1.1.0",
-		"@astrojs/sitemap": "^3.0.0",
+		"@astrojs/markdown-remark": "^4.2.1",
+		"@astrojs/mdx": "^2.1.1",
+		"@astrojs/sitemap": "^3.0.5",
 		"@astrojs/tailwind": "^5.1.0",
 		"@ianvs/prettier-plugin-sort-imports": "^4.1.1",
 		"@resvg/resvg-js": "^2.4.1",
