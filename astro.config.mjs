@@ -1,7 +1,6 @@
 import { defineConfig, sharpImageService } from "astro/config";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
-import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
@@ -14,6 +13,7 @@ const POSTS_TOC_HEADING = "Table of contents";
 
 // https://astro.build/config
 export default defineConfig({
+	prefetch: true,
 	site: "https://seancassiere.com/",
 	image: sharpImageService(),
 	markdown: {
@@ -45,7 +45,7 @@ export default defineConfig({
 			],
 		],
 	},
-	integrations: [mdx(), tailwind(), sitemap(), prefetch()],
+	integrations: [mdx(), tailwind(), sitemap()],
 	vite: {
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
