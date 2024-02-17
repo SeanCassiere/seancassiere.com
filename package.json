@@ -11,8 +11,8 @@
 		"format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,md,json,astro}' --config ./prettier.config.cjs"
 	},
 	"dependencies": {
-		"@astrojs/rss": "^4.0.4",
-		"astro": "^4.3.0",
+		"@astrojs/rss": "^4.0.5",
+		"astro": "^4.4.0",
 		"satori": "^0.10.13",
 		"satori-html": "^0.3.2",
 		"sharp": "^0.33.2"
