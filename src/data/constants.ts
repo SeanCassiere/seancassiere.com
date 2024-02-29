@@ -43,29 +43,19 @@ export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 			"Beautifully designed components that you can copy and paste into your apps.",
 	},
 	{
-		name: "Drizzle ORM",
-		link: "https://orm.drizzle.team",
-		tagLine: "Typescript ORM that let's you love SQL.",
-	},
-	{
 		name: "Tanstack Router",
 		link: "https://tanstack.com/router",
 		tagLine: "Modern and scalable routing for React applications.",
 	},
 	{
-		name: "PlanetScale",
-		link: "https://planetscale.com",
-		tagLine: "A database that brings you scale, performance, and reliability.",
-	},
-	{
-		name: "tRPC",
-		link: "https://trpc.io",
-		tagLine: "End-to-end typesafe APIs made easy.",
-	},
-	{
 		name: "Tanstack Query",
 		link: "https://tanstack.com/query",
 		tagLine: "Powerful asynchronous state management for React.",
+	},
+	{
+		name: "Drizzle ORM",
+		link: "https://orm.drizzle.team",
+		tagLine: "Typescript ORM that let's you love SQL.",
 	},
 	{
 		name: "TailwindCSS",
