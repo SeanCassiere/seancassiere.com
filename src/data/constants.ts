@@ -7,28 +7,32 @@ export const SOCIAL_LINKS = {
 	sitemap: "/sitemap-0.xml",
 };
 
-export type Project = { name: string; link: string; description: string };
+export type Project = {
+	name: string;
+	link: string;
+	description: string;
+	role: string;
+};
 
-export const PROJECTS: Project[] = [
+export const PROJECTS: Array<Project> = [
 	{
-		name: "ping-rents",
-		link: SOCIAL_LINKS.github + "/ping-rents",
-		description: "A basic react-native car rental management mobile app.",
-	},
-	{
-		name: "seancassiere.com",
-		link: SOCIAL_LINKS.github + "/seancassiere.com",
-		description: "A mundane website built with Astro.",
-	},
-	{
-		name: "nv-reservation-cc-update",
-		link: SOCIAL_LINKS.github + "/nv-reservation-cc-update",
+		name: "TanStack Router",
+		role: "Maintainer",
+		link: "https://github.com/TanStack/router",
 		description:
-			"Add customer credit card details into RENTALL using this react app.",
+			"Fully typesafe Router for React w/ built-in caching, 1st class search-param APIs, client-side cache integration and isomorphic rendering.",
+	},
+	{
+		name: "nv-rental-clone",
+		role: "Creator and Maintainer",
+		link: "https://github.com/SeanCassiere/nv-rental-clone",
+		description:
+			"A basic clone of Navotar built with Tailwind, Tanstack Router, and TanStack Query",
 	},
 	{
 		name: "simple-logging-server",
-		link: SOCIAL_LINKS.github + "/simple-logging-server",
+		role: "Creator and Maintainer",
+		link: "https://github.com/SeanCassiere/simple-logging-server",
 		description: "An up and running fastify server for storing my app logs.",
 	},
 ];
@@ -43,9 +47,9 @@ export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 			"Beautifully designed components that you can copy and paste into your apps.",
 	},
 	{
-		name: "Tanstack Router",
-		link: "https://tanstack.com/router",
-		tagLine: "Modern and scalable routing for React applications.",
+		name: "Tanstack Start",
+		link: "https://tanstack.com/start",
+		tagLine: "Full-stack React framework powered by TanStack Router.",
 	},
 	{
 		name: "Tanstack Query",
