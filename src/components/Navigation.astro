@@ -1,0 +1,41 @@
+---
+type Props = astroHTML.JSX.HTMLAttributes;
+
+const props = Astro.props;
+
+const url = new URL(Astro.request.url);
+
+const links: Array<{
+	href: string;
+	text: string;
+	match: astroHTML.JSX.AriaAttributes["aria-current"];
+}> = [
+	{ href: "/", match: url.pathname === "/" ? "page" : false, text: "home" },
+	{
+		href: "/blog",
+		match: url.pathname.toLowerCase().startsWith("/blog") ? "page" : false,
+		text: "blog",
+	},
+];
+---
+
+<nav id="primary-navigation" {...props}>
+	<ul class="flex items-center gap-4">
+		{
+			links.map((link) => (
+				<li>
+					<a
+						href={link.href}
+						class="py-1.5 decoration-transparent decoration-wavy decoration-2 underline-offset-4 transition-all hover:underline hover:decoration-accent focus-visible:underline focus-visible:decoration-accent aria-[current='page']:underline aria-[current='page']:decoration-accent"
+						aria-current={link.match}
+					>
+						{link.text}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+	<div>
+		<span>Search</span>
+	</div>
+</nav>

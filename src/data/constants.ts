@@ -7,14 +7,14 @@ export const SOCIAL_LINKS = {
 	sitemap: "/sitemap-0.xml",
 };
 
-export type Project = {
+export type MyProject = {
 	name: string;
 	link: string;
 	description: string;
 	role: string;
 };
 
-export const PROJECTS: Array<Project> = [
+export const MY_PROJECTS: Array<MyProject> = [
 	{
 		name: "TanStack Router",
 		role: "Maintainer",
@@ -37,9 +37,9 @@ export const PROJECTS: Array<Project> = [
 	},
 ];
 
-export type ExcitedTechnology = { name: string; link: string; tagLine: string };
+export type MyTechnology = { name: string; link: string; tagLine: string };
 
-export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
+export const MY_TECHNOLOGIES: Array<MyTechnology> = [
 	{
 		name: "shadcn/ui",
 		link: "https://ui.shadcn.com",
@@ -65,5 +65,38 @@ export const EXCITED_TECHNOLOGIES: ExcitedTechnology[] = [
 		name: "TailwindCSS",
 		link: "https://tailwindcss.com",
 		tagLine: "Rapidly build modern websites without ever leaving your HTML.",
+	},
+];
+
+export type MyLink = {
+	name: string;
+	href: string;
+	target?: "_blank" | undefined;
+};
+
+export const MY_LINKS: Array<MyLink> = [
+	{
+		name: "Email",
+		href: "mailto:me@seancassiere.com",
+		target: "_blank",
+	},
+	{
+		name: "Twitter/X",
+		href: "https://twitter.com/SeanCassiere",
+		target: "_blank",
+	},
+	{
+		name: "GitHub",
+		href: "https://github.com/SeanCassiere",
+		target: "_blank",
+	},
+	{
+		name: "LinkedIn",
+		href: "https://www.linkedin.com/in/seancassiere/",
+		target: "_blank",
+	},
+	{
+		name: "RSS",
+		href: "/rss.xml",
 	},
 ];
