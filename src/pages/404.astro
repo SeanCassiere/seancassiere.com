@@ -1,5 +1,5 @@
 ---
-import PageLayout from "@/layouts/PageLayout";
+import DocumentLayout from "@/layouts/DocumentLayout";
 
 const meta = {
 	title: "Not found",
@@ -7,9 +7,12 @@ const meta = {
 };
 ---
 
-<PageLayout meta={meta}>
-	<h1 class="themed-title mb-6">
-		<span class="text-accent">404</span> | Oops something went wrong!
+<DocumentLayout meta={meta}>
+	<h1 class="mb-4 text-2xl font-medium lowercase tracking-tight">
+		<span aria-label="Shrug emoji">🤷🏼‍♂️</span> Oops, page not found!
 	</h1>
-	<p class="mb-8">Please use the navigation to find your way back.</p>
-</PageLayout>
+	<p class="mb-8">
+		It looks like this page is lost in space! Please use the navigation to find
+		your way back.
+	</p>
+</DocumentLayout>
