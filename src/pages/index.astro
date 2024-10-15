@@ -15,7 +15,7 @@ const allPosts = await getCollection("blog", ({ data }) => data.draft !== true);
 const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
-<DocumentLayout meta={{}}>
+<DocumentLayout meta={{ title: "Home" }}>
 	<h1 class="mb-4 text-2xl font-medium lowercase tracking-tight">
 		Sean Cassiere
 	</h1>

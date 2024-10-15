@@ -1,12 +1,13 @@
 ---
 import DocumentMeta from "@/components/DocumentMeta";
+import type { Props as DocumentMetaProps } from "@/components/DocumentMeta";
 import Navigation from "@/components/Navigation";
 
 interface Props {
-	meta: any;
+	meta: DocumentMetaProps;
 }
 
-const { meta: _ } = Astro.props;
+const { meta } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -17,7 +18,7 @@ const currentYear = new Date().getFullYear();
 	style="scrollbar-gutter: stable;"
 >
 	<head>
-		<DocumentMeta title="Home" />
+		<DocumentMeta {...meta} />
 	</head>
 	<body class="flex min-h-dvh flex-col justify-between">
 		<div>

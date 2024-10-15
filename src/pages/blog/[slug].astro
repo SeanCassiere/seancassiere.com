@@ -2,7 +2,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getCollection } from "astro:content";
 
-import PostLink from "@/components/blog/PostLink";
+import PostLink from "@/components/PostLink";
 
 import DocumentLayout from "@/layouts/DocumentLayout";
 
@@ -21,7 +21,7 @@ export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-// const socialImage = entry.data.ogImage ?? `/og/${entry.slug}.png`;
+const socialImage = entry.data.ogImage ?? `/og/${entry.slug}.png`;
 const articleDate = entry.data.publishDate.toISOString();
 ---
 
@@ -50,7 +50,17 @@ const articleDate = entry.data.publishDate.toISOString();
 	});
 </script>
 
-<DocumentLayout meta={{}}>
+<DocumentLayout
+	meta={{
+		article: {
+			...entry,
+			data: {
+				...entry.data,
+				ogImage: socialImage,
+			},
+		},
+	}}
+>
 	<div id="blog-hero">
 		{
 			entry.data.draft && (
