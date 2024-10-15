@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { fontFamily } from "tailwindcss/defaultTheme";
-import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -52,10 +51,7 @@ module.exports = {
 				sans: [...fontFamily.sans],
 				serif: [...fontFamily.serif],
 			},
-			transitionProperty: {
-				height: "height",
-			},
-			typography: (theme) => ({
+			typography: () => ({
 				blog: {
 					css: {
 						"--tw-prose-body": "text-foreground",
@@ -72,22 +68,75 @@ module.exports = {
 				DEFAULT: {
 					css: {
 						a: {
-							"@apply themed-link no-underline": "",
+							textUnderlineOffset: "2px",
+							"&:hover": {
+								color: "hsl(var(--primary))",
+							},
 						},
 						"h1 a": {
-							"@apply bg-none hover:bg-none": "",
+							backgroundImage: "none",
+							textUnderlineOffset: "2px",
+							textDecorationLine: "underline",
+							textDecorationColor: "transparent",
+							transitionProperty: "all",
+							transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+							transitionDuration: "150ms",
+							"&:hover": {
+								backgroundImage: "none",
+								textDecorationColor: "hsl(var(--primary))",
+							},
 						},
 						"h2 a": {
-							"@apply bg-none hover:bg-none": "",
+							backgroundImage: "none",
+							textUnderlineOffset: "2px",
+							textDecorationLine: "underline",
+							textDecorationColor: "transparent",
+							transitionProperty: "all",
+							transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+							transitionDuration: "150ms",
+							"&:hover": {
+								backgroundImage: "none",
+								textDecorationColor: "hsl(var(--primary))",
+							},
 						},
 						"h3 a": {
-							"@apply bg-none hover:bg-none": "",
+							backgroundImage: "none",
+							textUnderlineOffset: "2px",
+							textDecorationLine: "underline",
+							textDecorationColor: "transparent",
+							transitionProperty: "all",
+							transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+							transitionDuration: "150ms",
+							"&:hover": {
+								backgroundImage: "none",
+								textDecorationColor: "hsl(var(--primary))",
+							},
 						},
 						"h4 a": {
-							"@apply bg-none hover:bg-none": "",
+							backgroundImage: "none",
+							textUnderlineOffset: "2px",
+							textDecorationLine: "underline",
+							textDecorationColor: "transparent",
+							transitionProperty: "all",
+							transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+							transitionDuration: "150ms",
+							"&:hover": {
+								backgroundImage: "none",
+								textDecorationColor: "hsl(var(--primary))",
+							},
 						},
 						"h5 a": {
-							"@apply bg-none hover:bg-none": "",
+							backgroundImage: "none",
+							textUnderlineOffset: "2px",
+							textDecorationLine: "underline",
+							textDecorationColor: "transparent",
+							transitionProperty: "all",
+							transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+							transitionDuration: "150ms",
+							"&:hover": {
+								backgroundImage: "none",
+								textDecorationColor: "hsl(var(--primary))",
+							},
 						},
 						strong: {
 							fontWeight: "700",
@@ -121,7 +170,6 @@ module.exports = {
 				sm: {
 					css: {
 						code: {
-							fontSize: theme("fontSize.sm")[0],
 							fontWeight: "400",
 						},
 					},
@@ -132,21 +180,5 @@ module.exports = {
 	plugins: [
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/aspect-ratio"),
-		plugin(function ({ addComponents }) {
-			addComponents({
-				".themed-link": {
-					"@apply bg-[size:100%_6px] bg-bottom font-medium bg-repeat-x": {},
-					backgroundImage:
-						"linear-gradient(transparent,transparent 5px,hsl(var(--secondary-foreground)) 5px,hsl(var(--secondary-foreground)))",
-					"&:hover": {
-						backgroundImage:
-							"linear-gradient(transparent,transparent 4px,hsl(var(--primary)) 4px,hsl(var(--primary)))",
-					},
-				},
-				".themed-title": {
-					"@apply text-2xl font-semibold text-foreground": {},
-				},
-			});
-		}),
 	],
 };

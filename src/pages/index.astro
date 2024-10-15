@@ -1,96 +1,185 @@
 ---
 import { getCollection } from "astro:content";
 
-import PostPreview from "@/components/blog/PostPreview";
-import ExcitedTechnologyItem from "@/components/home/ExcitedTechnologyItem";
-import ProjectItem from "@/components/home/ProjectItem";
-import SocialList from "@/components/SocialList";
-
-import PageLayout from "@/layouts/PageLayout";
+import DocumentLayout from "@/layouts/DocumentLayout";
 
 import { sortBlogPostsByDate } from "@/utils/content";
-import { getAge } from "@/utils/dates";
+import { getAge, getFormattedDate } from "@/utils/dates";
 
-import { EXCITED_TECHNOLOGIES, PROJECTS } from "@/data/constants";
+import { MY_LINKS, MY_PROJECTS, MY_TECHNOLOGIES } from "@/data/constants";
 
 const age = getAge("2000-04-01");
-
 const MAX_POSTS = 5;
-const posts = await getCollection("blog", ({ data }) => data.draft !== true);
-const sortedPosts = sortBlogPostsByDate(posts).slice(0, MAX_POSTS);
 
-const projects = PROJECTS;
-const excitedTechnologies = EXCITED_TECHNOLOGIES;
+const allPosts = await getCollection("blog", ({ data }) => data.draft !== true);
+const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
-<PageLayout meta={{ title: "home" }}>
-	<section aria-label="Introduction">
-		<h1 class="themed-title mb-6">Hello World!</h1>
-		<p class="mb-4">
-			Hi there, I'm <strong>Sean Cassiere</strong>. I'm <span
-				id="introduction-age">{age}</span
-			> y/o and currently pursuing a <strong> Master in IT</strong>.
-		</p>
-		<p class="mb-4">
-			I like jamming out to tunes on Spotify and venturing on side-projects that
-			are never completed 😅. I live in VSCode and have a passion following
-			open-source technologies.
-		</p>
-		<SocialList />
-	</section>
-	<section class="mt-12" aria-label="Projects">
-		<h2 class="themed-title mb-4 text-xl">Projects</h2>
-		<ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
+<DocumentLayout meta={{ title: "Home" }}>
+	<h1 class="mb-4 text-2xl font-medium lowercase tracking-tight">
+		Sean Cassiere
+	</h1>
+	<ul class="mb-4 grid gap-2 lowercase">
+		<li class="flex items-center gap-2">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-6 stroke-foreground"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				fill="none"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+				<path
+					d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"
+				></path>
+			</svg><span>Invercargill, New Zealand</span>
+		</li>
+		<li class="flex items-center gap-2">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-6 stroke-foreground"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				fill="none"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
+				<path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
+			</svg>
+			<span>Southern Institute of Technology</span>
+		</li>
+	</ul>
+	<p class="mb-14 lowercase">
+		I'm a <span id="introduction-age">{age}</span> y/o, currently pursuing a Master
+		in IT. I like jamming out to tunes on YouTube Music and venturing on side-projects
+		that are never completed 😅. You should know that I tend to live in VSCode and
+		have a passion following <i>fun</i> open-source projects.
+	</p>
+	<div class="mb-12 grid grid-cols-1 gap-12 lowercase md:grid-cols-2">
+		<section aria-label="Cool tech I'm interested in">
+			<h3 class="mb-6 text-xl font-medium tracking-tight" id="tech-i-love">
+				Tech I ❤️
+			</h3>
+			<ul class="space-y-4 xl:space-y-8">
+				{
+					MY_TECHNOLOGIES.map((tech) => (
+						<li>
+							<a
+								href={tech.link}
+								target="_blank"
+								class="mb-4 inline-block font-medium underline underline-offset-2"
+							>
+								{tech.name}
+							</a>
+							<p class="text-foreground/70">{tech.tagLine}</p>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+		<section aria-label="Projects I've worked on">
+			<h3 class="mb-6 text-xl font-medium tracking-tight" id="projects">
+				Projects
+			</h3>
+			<ul class="space-y-4 xl:space-y-8">
+				{
+					MY_PROJECTS.map((project) => (
+						<li>
+							<a
+								href={project.link}
+								target="_blank"
+								class="mb-4 inline-block font-medium underline underline-offset-2"
+							>
+								{project.name}
+							</a>
+							<p class="mb-2 text-[90%] text-foreground/95 xl:mb-3">
+								{project.role}
+							</p>
+							<p class="text-foreground/75">{project.description}</p>
+						</li>
+					))
+				}
+				<li>
+					<a
+						href="https://github.com/SeanCassiere"
+						target="_blank"
+						class="font-medium underline underline-offset-2">all projects →</a
+					>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<section class="mb-12 lowercase" aria-label="Blog posts I've published">
+		<h3 class="mb-6 text-xl font-medium tracking-tight" id="blog-posts">
+			Blog posts
+		</h3>
+		<ul class="space-y-6 xl:space-y-8">
 			{
-				projects.map((project) => (
+				posts.map((post) => (
 					<li>
-						<ProjectItem item={project} />
-					</li>
-				))
-			}
-		</ul>
-	</section>
-	<section class="mt-12" aria-label="Blog posts">
-		<h2 class="themed-title mb-4 text-xl">Blog</h2>
-		<ul class="space-y-8 sm:space-y-4">
-			{
-				sortedPosts.map((p) => (
-					<li class="flex flex-col gap-x-2 sm:flex-row-reverse sm:justify-between [&>time]:sm:text-right">
-						<PostPreview post={p} />
-					</li>
-				))
-			}
-			{
-				posts.length > MAX_POSTS && (
-					<li class="pt-4">
-						<a href="/blog" class="themed-link" data-astro-prefetch>
-							All posts →
+						<a
+							href={`/blog/${post.slug}`}
+							class="flex w-full flex-col md:flex-row md:items-center md:justify-between"
+							data-astro-prefetch
+						>
+							<span
+								class="underline underline-offset-2"
+								transition:name={`post-${post.slug}-title`}
+							>
+								{post.data.title}
+							</span>
+							<time
+								datetime={new Date(post.data.publishDate).toISOString()}
+								class="text-sm text-foreground/75 md:text-base"
+								transition:name={`post-${post.slug}-date`}
+							>
+								{getFormattedDate(post.data.publishDate)}
+							</time>
 						</a>
 					</li>
-				)
+				))
 			}
+			<li>
+				<a href="/blog" class="font-medium underline underline-offset-2"
+					>all posts →</a
+				>
+			</li>
 		</ul>
 	</section>
-	<section class="mt-12" aria-label="Technology that I love">
-		<h2 class="themed-title mb-4 text-xl">I'm in ❤️ with this tech</h2>
-		<ul class="space-y-4 sm:space-y-3">
+	<section class="mb-10 lowercase" aria-label="Ways to get in contact with me">
+		<h3 class="mb-6 text-xl font-medium tracking-tight" id="links">Links</h3>
+		<ul class="flex flex-wrap justify-start gap-5">
 			{
-				excitedTechnologies.map((technology) => (
-					<li>
-						<ExcitedTechnologyItem item={technology} />
+				MY_LINKS.map((link) => (
+					<li class="text-foreground/75 focus-within:text-foreground hover:text-foreground">
+						<a
+							href={link.href}
+							target={link.target}
+							class="flex items-center gap-1"
+						>
+							<span>{link.name}</span>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="size-5 stroke-current"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<path d="M17 7l-10 10" />
+								<path d="M8 7l9 0l0 9" />
+							</svg>
+						</a>
 					</li>
 				))
 			}
 		</ul>
 	</section>
-	<script>
-		import { getAge } from "@/utils/dates";
-
-		const ageDomSpan = document.querySelector("#introduction-age");
-
-		if (ageDomSpan) {
-			const ageThisYear = getAge("2000-04-01");
-			ageDomSpan.innerHTML = String(ageThisYear);
-		}
-	</script>
-</PageLayout>
+</DocumentLayout>

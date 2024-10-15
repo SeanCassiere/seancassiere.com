@@ -3,12 +3,10 @@ import type { GetStaticPaths, Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
-import PostPreview from "@/components/blog/PostPreview";
-import Pagination from "@/components/Paginator";
-
-import PageLayout from "@/layouts/PageLayout";
+import DocumentLayout from "@/layouts/DocumentLayout";
 
 import { sortBlogPostsByDate } from "@/utils/content";
+import { getFormattedDate } from "@/utils/dates";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const posts = await getCollection("blog", ({ data }) => data.draft !== true);
@@ -23,40 +21,68 @@ interface Props {
 const { page } = Astro.props as Props;
 
 const meta = {
-	title: "Posts",
+	title: "Blog posts",
 	description: "A collection of blog posts by Sean Cassiere",
 };
 
-const paginationProps = {
-	...(page.url.prev && {
-		prevUrl: {
-			url: page.url.prev,
-			text: `← Previous`,
-		},
-	}),
-	...(page.url.next && {
-		nextUrl: {
-			url: page.url.next,
-			text: `Next →`,
-		},
-	}),
-};
+const prevUrl = page.url.prev || null;
+const nextUrl = page.url.next || null;
 ---
 
-<PageLayout meta={meta}>
-	<h1 class="themed-title mb-6">Posts</h1>
-	<div class="grid">
-		<section aria-label="Blog post list">
-			<ul class="space-y-8 text-start sm:space-y-6">
-				{
-					page.data.map((p) => (
-						<li class="flex flex-col flex-wrap gap-2 sm:flex-row">
-							<PostPreview post={p} as="h2" />
-						</li>
-					))
-				}
-			</ul>
-			<Pagination {...paginationProps} />
-		</section>
-	</div>
-</PageLayout>
+<DocumentLayout meta={meta}>
+	<h1 class="mb-14 text-2xl font-medium lowercase tracking-tight">Posts</h1>
+	<section class="mb-12 lowercase" aria-label="Blog posts I've published">
+		<ul class="space-y-6 xl:space-y-8">
+			{
+				page.data.map((post) => (
+					<li>
+						<a
+							href={`/blog/${post.slug}`}
+							class="group grid gap-2"
+							data-astro-prefetch
+						>
+							<span
+								class="mb-1 underline decoration-transparent underline-offset-2 group-hover:decoration-foreground"
+								transition:name={`post-${post.slug}-title`}
+							>
+								{post.data.title}
+							</span>
+							<p class="text-foreground/75">{post.data.description}</p>
+							<time
+								datetime={new Date(post.data.publishDate).toISOString()}
+								class="text-sm text-foreground/75"
+								transition:name={`post-${post.slug}-date`}
+							>
+								{getFormattedDate(post.data.publishDate)}
+							</time>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		{
+			(prevUrl || nextUrl) && (
+				<nav class="mt-10 flex items-center gap-x-4">
+					{prevUrl && (
+						<a
+							class="me-auto py-2 underline underline-offset-2"
+							href={prevUrl}
+							data-astro-prefetch
+						>
+							← Previous
+						</a>
+					)}
+					{nextUrl && (
+						<a
+							class="ms-auto py-2 underline underline-offset-2"
+							href={nextUrl}
+							data-astro-prefetch
+						>
+							Next →
+						</a>
+					)}
+				</nav>
+			)
+		}
+	</section>
+</DocumentLayout>
