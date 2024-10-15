@@ -1,0 +1,109 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getCollection } from "astro:content";
+
+import PostLink from "@/components/blog/PostLink";
+
+import DocumentLayout from "@/layouts/DocumentLayout";
+
+import { getFormattedDate } from "@/utils/dates";
+
+export const getStaticPaths = (async () => {
+	const posts = await getCollection("blog");
+	return posts.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}) satisfies GetStaticPaths;
+
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// const socialImage = entry.data.ogImage ?? `/og/${entry.slug}.png`;
+const articleDate = entry.data.publishDate.toISOString();
+---
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const scrollBtn =
+			(document.getElementById("to-top-btn") as HTMLButtonElement) || null;
+		const targetHeader =
+			(document.getElementById("blog-hero") as HTMLDivElement) || null;
+
+		if (!scrollBtn || !targetHeader) return;
+
+		function callback(entries: IntersectionObserverEntry[]) {
+			entries.forEach((entry) => {
+				// only show the scroll to top button when the heading is out of view
+				scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+			});
+		}
+
+		scrollBtn.addEventListener("click", () => {
+			document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+		});
+
+		const observer = new IntersectionObserver(callback);
+		observer.observe(targetHeader);
+	});
+</script>
+
+<DocumentLayout meta={{}}>
+	<div id="blog-hero">
+		{
+			entry.data.draft && (
+				<blockquote
+					class="my-8 rounded bg-primary/30 py-4 pl-4 text-foreground"
+					role="alert"
+				>
+					This post is a <strong>draft</strong>. If you're reading this, you're
+					privy to the secret link. Please <strong>don't share</strong> it with
+					anyone.
+				</blockquote>
+			)
+		}
+		<h1
+			class="mb-4 text-balance text-2xl font-medium tracking-tight"
+			transition:name={`post-${entry.slug}-title`}
+		>
+			{entry.data.title}
+		</h1>
+		<time
+			class="mb-2 block text-foreground/90"
+			datetime={articleDate}
+			transition:name={`post-${entry.slug}-date`}
+			>{getFormattedDate(entry.data.publishDate)}</time
+		>
+		<p class="mb-14">
+			{entry.data.description}
+		</p>
+	</div>
+	<article
+		class="prose-blog prose mb-10 prose-headings:scroll-mt-4 prose-headings:text-lg prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-th:before:content-none [&>u]:underline-offset-4 [&_div[data-remark-code-title]+pre]:mt-0 [&_div[data-remark-code-title]+pre]:rounded-t-none [&_div[data-remark-code-title]+pre]:border-b [&_div[data-remark-code-title]+pre]:border-l [&_div[data-remark-code-title]+pre]:border-r [&_div[data-remark-code-title]+pre]:border-primary [&_div[data-remark-code-title]]:mt-6 [&_div[data-remark-code-title]]:rounded-t [&_div[data-remark-code-title]]:border-l [&_div[data-remark-code-title]]:border-r [&_div[data-remark-code-title]]:border-t [&_div[data-remark-code-title]]:border-primary [&_div[data-remark-code-title]]:bg-accent-foreground [&_div[data-remark-code-title]]:px-4 [&_div[data-remark-code-title]]:py-1.5 [&_div[data-remark-code-title]]:text-sm [&_div[data-remark-code-title]]:font-medium [&_div[data-remark-code-title]]:text-accent"
+	>
+		<Content components={{ a: PostLink }} />
+	</article>
+	<button
+		id="to-top-btn"
+		class="z-90 fixed bottom-8 end-4 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 border-foreground bg-foreground text-3xl text-background opacity-0 shadow-lg outline-none transition-all duration-300 focus-within:outline-none hover:border-primary hover:bg-primary hover:text-background focus-visible:border-primary focus-visible:bg-accent focus-visible:text-background focus-visible:outline-none sm:end-8 md:data-[show=true]:translate-y-0 md:data-[show=true]:opacity-100"
+		aria-label="Back to Top"
+		data-show="false"
+		><svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			focusable="false"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="2"
+			stroke="currentColor"
+			class="size-5"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+		</svg>
+	</button>
+</DocumentLayout>

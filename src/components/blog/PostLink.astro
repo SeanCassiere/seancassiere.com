@@ -8,6 +8,4 @@ const isInternal =
 	(props.href.startsWith("/") || props.href.startsWith("#"));
 ---
 
-<a {...props} target={isInternal ? "_self" : "_blank"}>
-	<slot />
-</a>
+<a {...props} target={isInternal ? "_self" : "_blank"}><slot /></a>
