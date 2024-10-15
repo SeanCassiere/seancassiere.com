@@ -3,8 +3,6 @@ import type { GetStaticPaths, Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
-import Pagination from "@/components/Paginator";
-
 import DocumentLayout from "@/layouts/DocumentLayout";
 
 import { sortBlogPostsByDate } from "@/utils/content";
@@ -27,20 +25,8 @@ const meta = {
 	description: "A collection of blog posts by Sean Cassiere",
 };
 
-const paginationProps = {
-	...(page.url.prev && {
-		prevUrl: {
-			url: page.url.prev,
-			text: `← Previous`,
-		},
-	}),
-	...(page.url.next && {
-		nextUrl: {
-			url: page.url.next,
-			text: `Next →`,
-		},
-	}),
-};
+const prevUrl = page.url.prev || null;
+const nextUrl = page.url.next || null;
 ---
 
 <DocumentLayout meta={meta}>
@@ -74,6 +60,29 @@ const paginationProps = {
 				))
 			}
 		</ul>
-		<Pagination {...paginationProps} />
+		{
+			(prevUrl || nextUrl) && (
+				<nav class="mt-10 flex items-center gap-x-4">
+					{prevUrl && (
+						<a
+							class="me-auto py-2 underline underline-offset-2"
+							href={prevUrl}
+							data-astro-prefetch
+						>
+							← Previous
+						</a>
+					)}
+					{nextUrl && (
+						<a
+							class="ms-auto py-2 underline underline-offset-2"
+							href={nextUrl}
+							data-astro-prefetch
+						>
+							Next →
+						</a>
+					)}
+				</nav>
+			)
+		}
 	</section>
 </DocumentLayout>
