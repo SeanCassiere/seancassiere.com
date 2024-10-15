@@ -19,19 +19,21 @@ const currentYear = new Date().getFullYear();
 	<head>
 		<DocumentMeta title="Home" />
 	</head>
-	<body>
-		<a
-			href="#main-block"
-			class="sr-only focus:not-sr-only focus:fixed focus:start-1 focus:top-1.5"
-		>
-			skip to content
-		</a>
-		<Navigation
-			class="mx-auto flex w-full max-w-2xl items-center justify-between px-4 pb-8 pt-10"
-		/>
-		<main id="main-block" class="mx-auto w-full max-w-2xl px-4 py-2.5">
-			<slot />
-		</main>
+	<body class="flex min-h-dvh flex-col justify-between">
+		<div>
+			<a
+				href="#main-block"
+				class="sr-only focus:not-sr-only focus:fixed focus:start-1 focus:top-1.5"
+			>
+				skip to content
+			</a>
+			<Navigation
+				class="mx-auto flex w-full max-w-2xl items-center justify-between px-4 pb-8 pt-10"
+			/>
+			<main id="main-block" class="mx-auto w-full max-w-2xl px-4 py-2.5">
+				<slot />
+			</main>
+		</div>
 		<footer
 			class="mx-auto w-full max-w-2xl border-t border-foreground/50 px-4 pb-8 pt-2.5"
 		>
