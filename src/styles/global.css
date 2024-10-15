@@ -2,63 +2,54 @@
 
 @layer base {
 	:root {
-		--background: 45 100% 96%;
-		--foreground: 43 90% 4%;
-		--card: 45 100% 96%;
-		--card-foreground: 43 90% 4%;
-		--popover: 45 100% 96%;
-		--popover-foreground: 43 90% 4%;
-		--primary: 31 100% 50%;
-		--primary-foreground: 43 90% 4%;
-		--secondary: 45 100% 92%;
-		--secondary-foreground: 43 90% 4%;
-		--muted: 45 100% 20%;
-		--muted-foreground: 43 90% 70%;
-		--accent: 18 93% 42%;
-		--accent-foreground: 45 100% 96%;
+		--background: 240 60% 99%;
+		--foreground: 246 76% 5%;
+		--card: 240 60% 99%;
+		--card-foreground: 246 76% 5%;
+		--popover: 240 60% 99%;
+		--popover-foreground: 246 76% 5%;
+		--primary: 243 68% 48%;
+		--primary-foreground: 240 60% 99%;
+		--secondary: 243 100% 93%;
+		--secondary-foreground: 246 76% 5%;
+		--muted: 240 61% 20%;
+		--muted-foreground: 246 76% 70%;
+		--accent: 242 100% 62%;
+		--accent-foreground: 240 60% 99%;
 		--destructive: 0 85% 60%;
-		--destructive-foreground: 43 90% 4%;
-		--border: 45 100% 20%;
-		--input: 45 100% 20%;
-		--ring: 18 93% 40%;
+		--destructive-foreground: 246 76% 5%;
+		--border: 240 61% 20%;
+		--input: 240 61% 20%;
+		--ring: 242 100% 40%;
 		--radius: 0.5rem;
 	}
 
 	@media (prefers-color-scheme: dark) {
 		:root {
-			--background: 45 100% 4%;
-			--foreground: 43 90% 96%;
-			--card: 45 100% 4%;
-			--card-foreground: 43 90% 96%;
-			--popover: 45 100% 4%;
-			--popover-foreground: 43 90% 96%;
-			--primary: 31 100% 50%;
-			--primary-foreground: 45 100% 4%;
-			--secondary: 45 100% 8%;
-			--secondary-foreground: 43 90% 96%;
-			--muted: 45 100% 80%;
-			--muted-foreground: 43 90% 96%;
-			--accent: 18 93% 58%;
-			--accent-foreground: 45 100% 4%;
+			--background: 240 60% 1%;
+			--foreground: 243 76% 95%;
+			--card: 240 60% 1%;
+			--card-foreground: 243 76% 95%;
+			--popover: 240 60% 1%;
+			--popover-foreground: 243 76% 95%;
+			--primary: 243 68% 52%;
+			--primary-foreground: 243 76% 95%;
+			--secondary: 243 100% 7%;
+			--secondary-foreground: 243 76% 95%;
+			--muted: 240 61% 80%;
+			--muted-foreground: 243 76% 95%;
+			--accent: 242 100% 38%;
+			--accent-foreground: 243 76% 95%;
 			--destructive: 0 62% 30%;
-			--destructive-foreground: 43 88% 10%;
-			--border: 45 100% 60%;
-			--input: 45 100% 80%;
-			--ring: 18 93% 60%;
+			--destructive-foreground: 243 76% 10%;
+			--border: 240 60% 60%;
+			--input: 240 61% 80%;
+			--ring: 242 100% 60%;
 		}
 	}
 
 	:root {
 		color-scheme: light dark;
-	}
-
-	html {
-		@apply h-full scroll-smooth border-border selection:bg-primary/50;
-		scrollbar-gutter: stable;
-	}
-
-	html body {
-		@apply mx-auto flex h-full max-w-3xl flex-col bg-background px-5 pt-16 font-sans text-base font-normal text-foreground antialiased sm:px-8 sm:pt-24;
 	}
 }
 

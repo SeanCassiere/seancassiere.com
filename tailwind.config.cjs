@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { fontFamily } from "tailwindcss/defaultTheme";
-import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -52,101 +51,10 @@ module.exports = {
 				sans: [...fontFamily.sans],
 				serif: [...fontFamily.serif],
 			},
-			transitionProperty: {
-				height: "height",
-			},
-			typography: (theme) => ({
-				blog: {
-					css: {
-						"--tw-prose-body": "text-foreground",
-						"--tw-prose-headings": "text-foreground",
-						"--tw-prose-links": "text-foreground",
-						"--tw-prose-bold": "text-foreground",
-						"--tw-prose-bullets": "text-foreground",
-						"--tw-prose-quotes": "text-accent",
-						"--tw-prose-code": "text-foreground",
-						"--tw-prose-hr": "0.5px dashed hsl(var(--border))",
-						"--tw-prose-th-borders": "border-border",
-					},
-				},
-				DEFAULT: {
-					css: {
-						a: {
-							"@apply themed-link no-underline": "",
-						},
-						"h1 a": {
-							"@apply bg-none hover:bg-none": "",
-						},
-						"h2 a": {
-							"@apply bg-none hover:bg-none": "",
-						},
-						"h3 a": {
-							"@apply bg-none hover:bg-none": "",
-						},
-						"h4 a": {
-							"@apply bg-none hover:bg-none": "",
-						},
-						"h5 a": {
-							"@apply bg-none hover:bg-none": "",
-						},
-						strong: {
-							fontWeight: "700",
-						},
-						code: {
-							border: "1px dotted hsl(var(--border))",
-							borderRadius: "2px",
-							"@apply font-sans": "",
-						},
-						blockquote: {
-							borderLeftWidth: "none",
-						},
-						hr: {
-							borderTopStyle: "dashed",
-						},
-						thead: {
-							borderBottomWidth: "none",
-						},
-						"thead th": {
-							fontWeight: "700",
-							borderBottom: "1px dashed hsl(var(--border))",
-						},
-						"tbody tr": {
-							borderBottomWidth: "none",
-						},
-						tfoot: {
-							borderTop: "1px dashed hsl(var(--border))",
-						},
-					},
-				},
-				sm: {
-					css: {
-						code: {
-							fontSize: theme("fontSize.sm")[0],
-							fontWeight: "400",
-						},
-					},
-				},
-			}),
 		},
 	},
 	plugins: [
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/aspect-ratio"),
-		plugin(function ({ addComponents }) {
-			addComponents({
-				".themed-link": {
-					"@apply bg-[size:100%_6px] bg-bottom font-medium bg-repeat-x": {},
-					backgroundImage:
-						"linear-gradient(transparent,transparent 5px,hsl(var(--secondary-foreground)) 5px,hsl(var(--secondary-foreground)))",
-					"&:hover": {
-						backgroundImage:
-							"linear-gradient(transparent,transparent 4px,hsl(var(--primary)) 4px,hsl(var(--primary)))",
-					},
-				},
-				".themed-title": {
-					"@apply text-2xl font-semibold text-foreground": {},
-				},
-			});
-		}),
 	],
 };
