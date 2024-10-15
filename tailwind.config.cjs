@@ -69,6 +69,9 @@ module.exports = {
 					css: {
 						a: {
 							textUnderlineOffset: "2px",
+							"&:hover": {
+								color: "hsl(var(--primary))",
+							},
 						},
 						"h1 a": {
 							backgroundImage: "none",
@@ -80,7 +83,7 @@ module.exports = {
 							transitionDuration: "150ms",
 							"&:hover": {
 								backgroundImage: "none",
-								textDecorationColor: "hsl(var(--foreground))",
+								textDecorationColor: "hsl(var(--primary))",
 							},
 						},
 						"h2 a": {
@@ -93,7 +96,7 @@ module.exports = {
 							transitionDuration: "150ms",
 							"&:hover": {
 								backgroundImage: "none",
-								textDecorationColor: "hsl(var(--foreground))",
+								textDecorationColor: "hsl(var(--primary))",
 							},
 						},
 						"h3 a": {
@@ -106,7 +109,7 @@ module.exports = {
 							transitionDuration: "150ms",
 							"&:hover": {
 								backgroundImage: "none",
-								textDecorationColor: "hsl(var(--foreground))",
+								textDecorationColor: "hsl(var(--primary))",
 							},
 						},
 						"h4 a": {
@@ -119,7 +122,7 @@ module.exports = {
 							transitionDuration: "150ms",
 							"&:hover": {
 								backgroundImage: "none",
-								textDecorationColor: "hsl(var(--foreground))",
+								textDecorationColor: "hsl(var(--primary))",
 							},
 						},
 						"h5 a": {
@@ -132,7 +135,7 @@ module.exports = {
 							transitionDuration: "150ms",
 							"&:hover": {
 								backgroundImage: "none",
-								textDecorationColor: "hsl(var(--foreground))",
+								textDecorationColor: "hsl(var(--primary))",
 							},
 						},
 						strong: {
