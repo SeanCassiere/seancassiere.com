@@ -16,8 +16,10 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
 <DocumentLayout meta={{}}>
-	<h1 class="mb-4 text-2xl font-medium tracking-tight">sean cassiere</h1>
-	<ul class="mb-4 grid gap-2">
+	<h1 class="mb-4 text-2xl font-medium lowercase tracking-tight">
+		Sean Cassiere
+	</h1>
+	<ul class="mb-4 grid gap-2 lowercase">
 		<li class="flex items-center gap-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -52,17 +54,17 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 			<span>Southern Institute of Technology</span>
 		</li>
 	</ul>
-	<p class="mb-14">
+	<p class="mb-14 lowercase">
 		I'm a <span id="introduction-age">{age}</span> y/o, currently pursuing a Master
 		in IT. I like jamming out to tunes on Spotify and venturing on side-projects
 		that are never completed 😅. I live in VSCode and have a passion following <i
 			>fun</i
 		> open-source projects.
 	</p>
-	<div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-2">
+	<div class="mb-12 grid grid-cols-1 gap-12 lowercase md:grid-cols-2">
 		<section aria-label="Cool tech I'm interested in">
 			<h3 class="mb-6 text-xl font-medium tracking-tight" id="tech-i-love">
-				tech i ❤️
+				Tech I ❤️
 			</h3>
 			<ul class="space-y-4 xl:space-y-8">
 				{
@@ -83,7 +85,7 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 		</section>
 		<section aria-label="Projects I've worked on">
 			<h3 class="mb-6 text-xl font-medium tracking-tight" id="projects">
-				projects
+				Projects
 			</h3>
 			<ul class="space-y-4 xl:space-y-8">
 				{
@@ -113,9 +115,9 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 			</ul>
 		</section>
 	</div>
-	<section class="mb-12" aria-label="Blog posts I've published">
+	<section class="mb-12 lowercase" aria-label="Blog posts I've published">
 		<h3 class="mb-6 text-xl font-medium tracking-tight" id="blog-posts">
-			blog posts
+			Blog posts
 		</h3>
 		<ul class="space-y-6 xl:space-y-8">
 			{
@@ -123,7 +125,7 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 					<li>
 						<a
 							href={`/blog/${post.slug}`}
-							class="flex w-full flex-col lowercase md:flex-row md:items-center md:justify-between"
+							class="flex w-full flex-col md:flex-row md:items-center md:justify-between"
 							data-astro-prefetch
 						>
 							<span
@@ -150,12 +152,12 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 			</li>
 		</ul>
 	</section>
-	<section class="mb-10" aria-label="Ways to get in contact with me">
-		<h3 class="mb-6 text-xl font-medium tracking-tight" id="links">links</h3>
+	<section class="mb-10 lowercase" aria-label="Ways to get in contact with me">
+		<h3 class="mb-6 text-xl font-medium tracking-tight" id="links">Links</h3>
 		<ul class="flex flex-wrap justify-start gap-5">
 			{
 				MY_LINKS.map((link) => (
-					<li class="lowercase text-foreground/75 focus-within:text-foreground hover:text-foreground">
+					<li class="text-foreground/75 focus-within:text-foreground hover:text-foreground">
 						<a
 							href={link.href}
 							target={link.target}
