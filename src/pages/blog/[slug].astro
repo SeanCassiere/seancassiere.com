@@ -98,9 +98,12 @@ const articleDate = entry.data.publishDate.toISOString();
 				<aside class="prose prose-blog w-full lg:prose-sm prose-a:font-normal prose-a:no-underline lg:absolute lg:left-full lg:h-full lg:max-w-[38ch]">
 					<nav class="w-full py-2 lg:sticky lg:top-0 lg:pl-6 lg:pr-4">
 						<p>In this article</p>
-						<ul>
+						<ul id="toc-list">
 							{postHeadings.map((heading) => (
-								<li>
+								<li
+									class="group transition-all duration-200 focus-within:text-primary hover:text-primary data-[active='true']:text-primary"
+									data-active="false"
+								>
 									<a href={`#${heading.slug}`}>{heading.text}</a>
 								</li>
 							))}
@@ -137,3 +140,27 @@ const articleDate = entry.data.publishDate.toISOString();
 			d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
 	</svg>
 </button>
+<script>
+	function setupToc() {
+		const observer = new IntersectionObserver(function (entries) {
+			entries.forEach((entry) => {
+				const id = entry.target.getAttribute("id");
+
+				const activeAnchor = document.querySelector(
+					`#toc-list li a[href="#${id}"]`,
+				);
+				const parent = activeAnchor?.parentElement;
+				if (!parent) return;
+
+				parent.dataset.active = entry.intersectionRatio > 0 ? "true" : "false";
+			});
+		});
+
+		document.querySelectorAll("h2[id], h3[id]").forEach((heading) => {
+			observer.observe(heading);
+		});
+	}
+
+	document.addEventListener("astro:page-load", setupToc);
+	window.addEventListener("resize", setupToc);
+</script>
