@@ -19,7 +19,9 @@ export const getStaticPaths = (async () => {
 export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
+
+const postHeadings = headings.filter((h) => h.depth === 2);
 
 const socialImage = entry.data.ogImage ?? `/og/${entry.slug}.png`;
 const articleDate = entry.data.publishDate.toISOString();
@@ -86,34 +88,52 @@ const articleDate = entry.data.publishDate.toISOString();
 			transition:name={`post-${entry.slug}-date`}
 			>{getFormattedDate(entry.data.publishDate)}</time
 		>
-		<p class="mb-14">
+		<p class="mb-10">
 			{entry.data.description}
 		</p>
 	</div>
-	<article
-		class="prose-blog prose mb-10 prose-headings:scroll-mt-4 prose-headings:text-lg prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-th:before:content-none [&>u]:underline-offset-4 [&_div[data-remark-code-title]+pre]:mt-0 [&_div[data-remark-code-title]+pre]:rounded-t-none [&_div[data-remark-code-title]+pre]:border-b [&_div[data-remark-code-title]+pre]:border-l [&_div[data-remark-code-title]+pre]:border-r [&_div[data-remark-code-title]+pre]:border-primary [&_div[data-remark-code-title]]:mt-6 [&_div[data-remark-code-title]]:rounded-t [&_div[data-remark-code-title]]:border-l [&_div[data-remark-code-title]]:border-r [&_div[data-remark-code-title]]:border-t [&_div[data-remark-code-title]]:border-primary [&_div[data-remark-code-title]]:bg-primary-foreground [&_div[data-remark-code-title]]:px-4 [&_div[data-remark-code-title]]:py-1.5 [&_div[data-remark-code-title]]:text-sm [&_div[data-remark-code-title]]:font-medium [&_div[data-remark-code-title]]:text-primary"
-	>
-		<Content components={{ a: PostLink }} />
-	</article>
-	<button
-		id="to-top-btn"
-		class="z-90 fixed bottom-8 end-4 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 border-foreground bg-foreground text-3xl text-background opacity-0 shadow-lg outline-none transition-all duration-300 focus-within:outline-none hover:border-secondary hover:bg-secondary hover:text-foreground focus-visible:border-secondary focus-visible:bg-secondary focus-visible:text-foreground focus-visible:outline-none sm:end-8 md:data-[show=true]:translate-y-0 md:data-[show=true]:opacity-100"
-		aria-label="Back to Top"
-		data-show="false"
-		><svg
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-			focusable="false"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="2"
-			stroke="currentColor"
-			class="size-5"
+	<article class="relative">
+		{
+			postHeadings.length > 0 && (
+				<aside class="prose prose-blog w-full lg:prose-sm prose-a:font-normal prose-a:no-underline lg:absolute lg:left-full lg:h-full lg:max-w-[38ch]">
+					<nav class="w-full py-2 lg:sticky lg:top-0 lg:pl-6 lg:pr-4">
+						<p>In this article</p>
+						<ul>
+							{postHeadings.map((heading) => (
+								<li>
+									<a href={`#${heading.slug}`}>{heading.text}</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				</aside>
+			)
+		}
+		<div
+			class="prose prose-blog mb-10 prose-headings:scroll-mt-4 prose-headings:text-lg prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-th:before:content-none [&>u]:underline-offset-4 [&_div[data-remark-code-title]+pre]:mt-0 [&_div[data-remark-code-title]+pre]:rounded-t-none [&_div[data-remark-code-title]+pre]:border-b [&_div[data-remark-code-title]+pre]:border-l [&_div[data-remark-code-title]+pre]:border-r [&_div[data-remark-code-title]+pre]:border-primary [&_div[data-remark-code-title]]:mt-6 [&_div[data-remark-code-title]]:rounded-t [&_div[data-remark-code-title]]:border-l [&_div[data-remark-code-title]]:border-r [&_div[data-remark-code-title]]:border-t [&_div[data-remark-code-title]]:border-primary [&_div[data-remark-code-title]]:bg-primary-foreground [&_div[data-remark-code-title]]:px-4 [&_div[data-remark-code-title]]:py-1.5 [&_div[data-remark-code-title]]:text-sm [&_div[data-remark-code-title]]:font-medium [&_div[data-remark-code-title]]:text-primary"
 		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
-		</svg>
-	</button>
+			<Content components={{ a: PostLink }} />
+		</div>
+	</article>
 </DocumentLayout>
+<button
+	id="to-top-btn"
+	class="z-90 fixed bottom-8 end-4 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 border-foreground bg-foreground text-3xl text-background opacity-0 shadow-lg outline-none transition-all duration-300 focus-within:outline-none hover:border-secondary hover:bg-secondary hover:text-foreground focus-visible:border-secondary focus-visible:bg-secondary focus-visible:text-foreground focus-visible:outline-none data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8"
+	aria-label="Back to Top"
+	data-show="false"
+	><svg
+		xmlns="http://www.w3.org/2000/svg"
+		aria-hidden="true"
+		focusable="false"
+		fill="none"
+		viewBox="0 0 24 24"
+		stroke-width="2"
+		stroke="currentColor"
+		class="size-5"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+	</svg>
+</button>

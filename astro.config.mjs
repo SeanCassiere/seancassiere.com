@@ -6,10 +6,9 @@ import tailwind from "@astrojs/tailwind";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkCodeTitle from "remark-code-title";
-import remarkCollapse from "remark-collapse";
-import remarkToc from "remark-toc";
 
-const POSTS_TOC_HEADING = "Table of contents";
+// import remarkCollapse from "remark-collapse";
+// import remarkToc from "remark-toc";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,17 +22,7 @@ export default defineConfig({
 			wrap: true,
 		},
 		gfm: true,
-		remarkPlugins: [
-			[remarkToc, { ordered: true, heading: POSTS_TOC_HEADING }],
-			[
-				remarkCollapse,
-				{
-					test: POSTS_TOC_HEADING,
-					summary: "View the structure of this article",
-				},
-			],
-			remarkCodeTitle,
-		],
+		remarkPlugins: [remarkCodeTitle],
 		rehypePlugins: [
 			rehypeSlug,
 			rehypeHeadingIds,
