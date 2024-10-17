@@ -2,6 +2,7 @@
 	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
 		"baseUrl": ".",
+		"allowImportingTsExtensions": true,
 		"paths": {
 			"@/assets/*": ["src/assets/*"],
 			"@/components/*": ["src/components/*.astro"],
