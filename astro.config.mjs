@@ -7,9 +7,6 @@ import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkCodeTitle from "remark-code-title";
 
-// import remarkCollapse from "remark-collapse";
-// import remarkToc from "remark-toc";
-
 // https://astro.build/config
 export default defineConfig({
 	prefetch: true,
