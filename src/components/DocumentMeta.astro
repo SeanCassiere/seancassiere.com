@@ -19,10 +19,14 @@ const description = article?.data?.description ?? siteConfig.description;
 const pathname = Astro.url.pathname;
 
 const titleSeparator = "-";
-const siteTitle =
+const activeTitle =
 	pathname === "/"
 		? siteConfig.title.toLowerCase()
-		: `${article?.data?.title ?? title} ${titleSeparator} ${siteConfig.title.toLowerCase()}`;
+		: (article?.data?.title ?? title);
+const siteTitle =
+	pathname === "/"
+		? activeTitle
+		: `${activeTitle} ${titleSeparator} ${siteConfig.title.toLowerCase()}`;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 const socialImageURL = new URL(
@@ -61,7 +65,7 @@ const socialImageURL = new URL(
 <meta name="theme-color" content="hsl(var(--primary))" />
 
 <meta property="og:type" content={article ? "article" : "website"} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={activeTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content={siteConfig.title} />
@@ -83,7 +87,7 @@ const socialImageURL = new URL(
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={activeTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={socialImageURL} />
 
