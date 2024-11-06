@@ -141,6 +141,7 @@ const articleDate = entry.data.publishDate.toISOString();
 	</svg>
 </button>
 <script>
+	// Table of Contents
 	function setupToc() {
 		const observer = new IntersectionObserver(function (entries) {
 			entries.forEach((entry) => {
@@ -163,4 +164,28 @@ const articleDate = entry.data.publishDate.toISOString();
 
 	document.addEventListener("astro:page-load", setupToc);
 	window.addEventListener("resize", setupToc);
+</script>
+<script>
+	// Reader progess indicator
+	// The markup is in the DocumentLayout.astro file
+	const progressContainerEl = document.querySelector(
+		"#reader-progess-bar-container",
+	) as HTMLElement | null;
+
+	function updateScrollProgressBar() {
+		if (!progressContainerEl) return;
+
+		const windowScroll =
+			document.body.scrollTop || document.documentElement.scrollTop;
+		const height =
+			document.documentElement.scrollHeight -
+			document.documentElement.clientHeight;
+
+		const scrolled = Math.round((windowScroll / height) * 100);
+
+		progressContainerEl.style.setProperty("--progess-width", `${scrolled}%`);
+	}
+
+	window.addEventListener("scroll", updateScrollProgressBar);
+	document.addEventListener("astro:page-load", updateScrollProgressBar);
 </script>
