@@ -20,7 +20,19 @@ const currentYear = new Date().getFullYear();
 	<head>
 		<DocumentMeta {...meta} />
 	</head>
-	<body class="flex min-h-dvh flex-col justify-between">
+	<body class="relative flex min-h-dvh flex-col justify-between">
+		<div
+			id="reader-progess-bar-container"
+			class="fixed left-0 right-0 top-0 w-full bg-transparent md:hidden"
+			style="--progess-width: 0%; --progress-height: 0.25em; height: var(--progress-height)"
+			aria-hidden="true"
+		>
+			<div
+				class="float-left bg-secondary"
+				style="width: var(--progess-width); height: var(--progress-height);"
+			>
+			</div>
+		</div>
 		<div>
 			<a
 				href="#main-block"
