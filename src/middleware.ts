@@ -11,12 +11,7 @@ export const onRequest = defineMiddleware((ctx, next) => {
 		const slug = ctx.url.pathname.slice(3);
 		const url = redirects.get(slug);
 		if (url) {
-			return new Response(null, {
-				status: 301,
-				headers: {
-					Location: url,
-				},
-			});
+			return ctx.redirect(url, 301);
 		}
 	}
 
