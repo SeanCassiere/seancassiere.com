@@ -6,6 +6,8 @@ import { sortBlogPostsByDate } from "@/utils/content";
 
 import { siteConfig } from "@/site-config";
 
+export const prerender = true;
+
 export async function GET({ site }: APIContext) {
 	const posts = await getCollection("blog", ({ data }) => data.draft !== true);
 	const sortedPosts = sortBlogPostsByDate(posts);

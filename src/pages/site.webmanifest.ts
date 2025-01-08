@@ -14,6 +14,8 @@ interface SiteManifest {
 	display: string;
 }
 
+export const prerender = true;
+
 export async function GET() {
 	const body: SiteManifest = {
 		name: siteConfig.siteName,
