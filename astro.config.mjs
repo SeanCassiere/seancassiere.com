@@ -3,6 +3,7 @@ import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import vercel from "@astrojs/vercel";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkCodeTitle from "remark-code-title";
@@ -11,6 +12,8 @@ import remarkCodeTitle from "remark-code-title";
 export default defineConfig({
 	prefetch: true,
 	site: "https://seancassiere.com/",
+	output: "server",
+	adapter: vercel(),
 	image: sharpImageService(),
 	markdown: {
 		syntaxHighlight: "shiki",
