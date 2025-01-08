@@ -57,6 +57,8 @@ const markup = (title: string, pubDate: string) =>
 		</div>
 	</div>`;
 
+export const prerender = true;
+
 export async function GET({ params: { slug } }: APIContext) {
 	const post = await getEntry("blog", slug!);
 	const title = post?.data.title ?? siteConfig.title;

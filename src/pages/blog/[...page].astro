@@ -14,6 +14,8 @@ export const getStaticPaths = (async ({ paginate }) => {
 	return paginate(sortedPosts, { pageSize: 10 });
 }) satisfies GetStaticPaths;
 
+export const prerender = true;
+
 interface Props {
 	page: Page<CollectionEntry<"blog">>;
 }
