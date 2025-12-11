@@ -68,7 +68,13 @@ export async function GET({ params: { slug } }: APIContext) {
 	});
 	const svg = await satori(markup(title, postDate), ogOptions);
 	const png = new Resvg(svg).render().asPng();
-	return new Response(png, { headers: { "Content-Type": "image/png" } });
+	const stream = new ReadableStream({
+		start(controller) {
+			controller.enqueue(png);
+			controller.close();
+		},
+	});
+	return new Response(stream, { headers: { "Content-Type": "image/png" } });
 }
 
 export const getStaticPaths = (async () => {
