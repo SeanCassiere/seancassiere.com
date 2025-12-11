@@ -1,3 +1,5 @@
+import aspectRatioPlugin from "@tailwindcss/aspect-ratio";
+import typographyPlugin from "@tailwindcss/typography";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
@@ -176,10 +178,7 @@ const config = {
 			}),
 		},
 	},
-	plugins: [
-		require("@tailwindcss/typography"),
-		require("@tailwindcss/aspect-ratio"),
-	],
+	plugins: [typographyPlugin, aspectRatioPlugin],
 };
 
 export default config;
