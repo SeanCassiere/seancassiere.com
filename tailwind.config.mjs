@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	darkMode: "media",
 	theme: {
@@ -144,7 +143,7 @@ module.exports = {
 						code: {
 							border: "1px dotted hsl(var(--border))",
 							borderRadius: "2px",
-							"@apply font-sans": "",
+							fontFamily: "var(--font-sans)",
 						},
 						blockquote: {
 							borderLeftWidth: "none",
@@ -182,3 +181,5 @@ module.exports = {
 		require("@tailwindcss/aspect-ratio"),
 	],
 };
+
+export default config;
