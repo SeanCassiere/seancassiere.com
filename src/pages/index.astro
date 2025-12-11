@@ -18,14 +18,14 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
 <DocumentLayout meta={{ title: "Home" }}>
-	<h1 class="mb-4 text-2xl font-medium lowercase tracking-tight">
+	<h1 class="mb-4 text-2xl font-medium tracking-tight lowercase">
 		Sean Cassiere
 	</h1>
 	<ul class="mb-4 grid gap-2 lowercase">
 		<li class="flex items-center gap-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="size-6 stroke-foreground"
+				class="stroke-foreground size-6"
 				viewBox="0 0 24 24"
 				stroke-width="1.5"
 				fill="none"
@@ -42,7 +42,7 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 		<li class="flex items-center gap-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="size-6 stroke-foreground"
+				class="stroke-foreground size-6"
 				viewBox="0 0 24 24"
 				stroke-width="1.5"
 				fill="none"
@@ -99,7 +99,7 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 							>
 								{project.name}
 							</a>
-							<p class="mb-2 text-[90%] text-foreground/95 xl:mb-3">
+							<p class="text-foreground/95 mb-2 text-[90%] xl:mb-3">
 								{project.role}
 							</p>
 							<p class="text-foreground/75">{project.description}</p>
@@ -137,7 +137,7 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 							</span>
 							<time
 								datetime={new Date(post.data.publishDate).toISOString()}
-								class="text-sm text-foreground/75 md:text-base"
+								class="text-foreground/75 text-sm md:text-base"
 								transition:name={`post-${post.slug}-date`}
 							>
 								{getFormattedDate(post.data.publishDate)}

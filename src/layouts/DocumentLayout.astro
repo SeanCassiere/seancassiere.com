@@ -14,7 +14,7 @@ const currentYear = new Date().getFullYear();
 <!doctype html>
 <html
 	lang="en"
-	class="min-h-dvh scroll-smooth bg-background text-foreground selection:bg-secondary"
+	class="bg-background text-foreground selection:bg-secondary min-h-dvh scroll-smooth"
 	style="scrollbar-gutter: stable;"
 >
 	<head>
@@ -23,12 +23,12 @@ const currentYear = new Date().getFullYear();
 	<body class="relative flex min-h-dvh flex-col justify-between">
 		<div
 			id="reader-progess-bar-container"
-			class="fixed left-0 right-0 top-0 w-full bg-transparent md:hidden"
+			class="fixed top-0 right-0 left-0 w-full bg-transparent md:hidden"
 			style="--progess-width: 0%; --progress-height: 0.25em; height: var(--progress-height)"
 			aria-hidden="true"
 		>
 			<div
-				class="float-left bg-secondary"
+				class="bg-secondary float-left"
 				style="width: var(--progess-width); height: var(--progress-height);"
 			>
 			</div>
@@ -41,16 +41,16 @@ const currentYear = new Date().getFullYear();
 				skip to content
 			</a>
 			<Navigation
-				class="mx-auto flex w-full max-w-2xl items-center justify-start px-4 pb-8 pt-10"
+				class="mx-auto flex w-full max-w-2xl items-center justify-start px-4 pt-10 pb-8"
 			/>
 			<main id="main-block" class="mx-auto w-full max-w-2xl px-4 py-2.5">
 				<slot />
 			</main>
 		</div>
 		<footer
-			class="mx-auto w-full max-w-2xl border-t border-foreground/50 px-4 pb-8 pt-2.5"
+			class="border-foreground/50 mx-auto w-full max-w-2xl border-t px-4 pt-2.5 pb-8"
 		>
-			<div class="flex items-center justify-center gap-1.5 text-foreground/75">
+			<div class="text-foreground/75 flex items-center justify-center gap-1.5">
 				<span>Copyright © {currentYear}</span>
 				<span>·</span>
 				<span>Sean Cassiere</span>

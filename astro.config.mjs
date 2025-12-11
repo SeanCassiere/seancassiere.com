@@ -2,8 +2,9 @@ import { defineConfig, sharpImageService } from "astro/config";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel";
+// import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkCodeTitle from "remark-code-title";
@@ -34,10 +35,11 @@ export default defineConfig({
 			],
 		],
 	},
-	integrations: [mdx(), tailwind(), sitemap()],
+	integrations: [mdx(), sitemap()],
 	vite: {
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
 		},
+		plugins: [tailwindcss()],
 	},
 });
