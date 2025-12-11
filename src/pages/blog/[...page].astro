@@ -32,7 +32,7 @@ const nextUrl = page.url.next || null;
 ---
 
 <DocumentLayout meta={meta}>
-	<h1 class="mb-14 text-2xl font-medium lowercase tracking-tight">Posts</h1>
+	<h1 class="mb-14 text-2xl font-medium tracking-tight lowercase">Posts</h1>
 	<section class="mb-12 lowercase" aria-label="Blog posts I've published">
 		<ul class="space-y-6 xl:space-y-8">
 			{
@@ -44,7 +44,7 @@ const nextUrl = page.url.next || null;
 							data-astro-prefetch
 						>
 							<span
-								class="mb-1 underline decoration-transparent underline-offset-2 group-hover:decoration-foreground"
+								class="group-hover:decoration-foreground mb-1 underline decoration-transparent underline-offset-2"
 								transition:name={`post-${post.slug}-title`}
 							>
 								{post.data.title}
@@ -52,7 +52,7 @@ const nextUrl = page.url.next || null;
 							<p class="text-foreground/75">{post.data.description}</p>
 							<time
 								datetime={new Date(post.data.publishDate).toISOString()}
-								class="text-sm text-foreground/75"
+								class="text-foreground/75 text-sm"
 								transition:name={`post-${post.slug}-date`}
 							>
 								{getFormattedDate(post.data.publishDate)}

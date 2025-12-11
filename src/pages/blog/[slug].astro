@@ -69,7 +69,7 @@ const articleDate = entry.data.publishDate.toISOString();
 		{
 			entry.data.draft && (
 				<blockquote
-					class="my-8 rounded bg-primary/30 py-4 pl-4 text-foreground"
+					class="bg-primary/30 text-foreground my-8 rounded py-4 pl-4"
 					role="alert"
 				>
 					This post is a <strong>draft</strong>. If you're reading this, you're
@@ -79,13 +79,13 @@ const articleDate = entry.data.publishDate.toISOString();
 			)
 		}
 		<h1
-			class="mb-4 text-balance text-2xl font-medium tracking-tight"
+			class="mb-4 text-2xl font-medium tracking-tight text-balance"
 			transition:name={`post-${entry.slug}-title`}
 		>
 			{entry.data.title}
 		</h1>
 		<time
-			class="mb-2 block text-foreground/90"
+			class="text-foreground/90 mb-2 block"
 			datetime={articleDate}
 			transition:name={`post-${entry.slug}-date`}
 			>{getFormattedDate(entry.data.publishDate)}</time
@@ -97,13 +97,13 @@ const articleDate = entry.data.publishDate.toISOString();
 	<article class="relative">
 		{
 			postHeadings.length > 0 && (
-				<aside class="prose prose-blog w-full xl:prose-sm prose-a:font-normal prose-a:no-underline xl:absolute xl:left-full xl:h-full xl:max-w-[38ch]">
-					<nav class="w-full py-2 xl:sticky xl:top-0 xl:pl-6 xl:pr-4">
+				<aside class="prose prose-blog xl:prose-sm prose-a:font-normal prose-a:no-underline w-full xl:absolute xl:left-full xl:h-full xl:max-w-[38ch]">
+					<nav class="w-full py-2 xl:sticky xl:top-0 xl:pr-4 xl:pl-6">
 						<p>In this article</p>
 						<ul id="toc-list">
 							{postHeadings.map((heading) => (
 								<li
-									class="group transition-all duration-200 focus-within:text-primary hover:text-primary data-[active='true']:text-primary"
+									class="group focus-within:text-primary hover:text-primary data-[active='true']:text-primary transition-all duration-200"
 									data-active="false"
 								>
 									<a href={`#${heading.slug}`}>{heading.text}</a>
@@ -115,7 +115,7 @@ const articleDate = entry.data.publishDate.toISOString();
 			)
 		}
 		<div
-			class="prose prose-blog mb-10 prose-headings:scroll-mt-4 prose-headings:text-lg prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-th:before:content-none [&>u]:underline-offset-4 [&_div[data-remark-code-title]+pre]:mt-0 [&_div[data-remark-code-title]+pre]:rounded-t-none [&_div[data-remark-code-title]+pre]:border-b [&_div[data-remark-code-title]+pre]:border-l [&_div[data-remark-code-title]+pre]:border-r [&_div[data-remark-code-title]+pre]:border-primary [&_div[data-remark-code-title]]:mt-6 [&_div[data-remark-code-title]]:rounded-t [&_div[data-remark-code-title]]:border-l [&_div[data-remark-code-title]]:border-r [&_div[data-remark-code-title]]:border-t [&_div[data-remark-code-title]]:border-primary [&_div[data-remark-code-title]]:bg-primary-foreground [&_div[data-remark-code-title]]:px-4 [&_div[data-remark-code-title]]:py-1.5 [&_div[data-remark-code-title]]:text-sm [&_div[data-remark-code-title]]:font-medium [&_div[data-remark-code-title]]:text-primary"
+			class="prose prose-blog prose-headings:scroll-mt-4 prose-headings:text-lg prose-headings:font-semibold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-th:before:content-none [&_div[data-remark-code-title]+pre]:border-primary [&_div[data-remark-code-title]]:border-primary [&_div[data-remark-code-title]]:bg-primary-foreground [&_div[data-remark-code-title]]:text-primary mb-10 [&_div[data-remark-code-title]]:mt-6 [&_div[data-remark-code-title]]:rounded-t [&_div[data-remark-code-title]]:border-t [&_div[data-remark-code-title]]:border-r [&_div[data-remark-code-title]]:border-l [&_div[data-remark-code-title]]:px-4 [&_div[data-remark-code-title]]:py-1.5 [&_div[data-remark-code-title]]:text-sm [&_div[data-remark-code-title]]:font-medium [&_div[data-remark-code-title]+pre]:mt-0 [&_div[data-remark-code-title]+pre]:rounded-t-none [&_div[data-remark-code-title]+pre]:border-r [&_div[data-remark-code-title]+pre]:border-b [&_div[data-remark-code-title]+pre]:border-l [&>u]:underline-offset-4"
 		>
 			<Content components={{ a: PostLink }} />
 		</div>
@@ -123,7 +123,7 @@ const articleDate = entry.data.publishDate.toISOString();
 </DocumentLayout>
 <button
 	id="to-top-btn"
-	class="z-90 fixed bottom-8 end-4 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 border-foreground bg-foreground text-3xl text-background opacity-0 shadow-lg outline-hidden transition-all duration-300 focus-within:outline-hidden hover:border-secondary hover:bg-secondary hover:text-foreground focus-visible:border-secondary focus-visible:bg-secondary focus-visible:text-foreground focus-visible:outline-hidden data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8"
+	class="border-foreground bg-foreground text-background hover:border-secondary hover:bg-secondary hover:text-foreground focus-visible:border-secondary focus-visible:bg-secondary focus-visible:text-foreground fixed end-4 bottom-8 z-90 flex h-12 w-12 translate-y-28 items-center justify-center rounded-full border-2 text-3xl opacity-0 shadow-lg outline-hidden transition-all duration-300 focus-within:outline-hidden focus-visible:outline-hidden data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8"
 	aria-label="Back to Top"
 	data-show="false"
 	><svg
