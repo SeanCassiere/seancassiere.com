@@ -14,13 +14,6 @@ export const MY_PROJECTS: Array<MyProject> = [
 			"Fully typesafe Router for React w/ built-in caching, 1st class search-param APIs, client-side cache integration and isomorphic rendering. Start is the full-stack framework powered by Router.",
 	},
 	{
-		name: "nv-rental-clone",
-		role: "Creator and Maintainer",
-		link: "https://github.com/SeanCassiere/nv-rental-clone",
-		description:
-			"A basic clone of Navotar built with Tailwind, Tanstack Router, and TanStack Query",
-	},
-	{
 		name: "simple-logging-server",
 		role: "Creator and Maintainer",
 		link: "https://github.com/SeanCassiere/simple-logging-server",
