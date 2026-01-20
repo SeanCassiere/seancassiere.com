@@ -7,11 +7,11 @@ export type MyProject = {
 
 export const MY_PROJECTS: Array<MyProject> = [
 	{
-		name: "TanStack Router",
+		name: "TanStack Router & Start",
 		role: "Maintainer",
 		link: "https://github.com/TanStack/router",
 		description:
-			"Fully typesafe Router for React w/ built-in caching, 1st class search-param APIs, client-side cache integration and isomorphic rendering.",
+			"Fully typesafe Router for React w/ built-in caching, 1st class search-param APIs, client-side cache integration and isomorphic rendering. Start is the full-stack framework powered by Router.",
 	},
 	{
 		name: "nv-rental-clone",
@@ -36,11 +36,6 @@ export const MY_TECHNOLOGIES: Array<MyTechnology> = [
 		link: "https://ui.shadcn.com",
 		tagLine:
 			"Beautifully designed components that you can copy and paste into your apps.",
-	},
-	{
-		name: "Tanstack Start",
-		link: "https://tanstack.com/start",
-		tagLine: "Full-stack React framework powered by TanStack Router.",
 	},
 	{
 		name: "Tanstack Query",
