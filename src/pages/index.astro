@@ -142,20 +142,20 @@ const posts = sortBlogPostsByDate(allPosts).slice(0, MAX_POSTS);
 				posts.map((post) => (
 					<li>
 						<a
-							href={`/blog/${post.slug}`}
+							href={`/blog/${post.id}`}
 							class="flex w-full flex-col md:flex-row md:items-center md:justify-between"
 							data-astro-prefetch
 						>
 							<span
 								class="underline underline-offset-2"
-								transition:name={`post-${post.slug}-title`}
+								transition:name={`post-${post.id}-title`}
 							>
 								{post.data.title}
 							</span>
 							<time
 								datetime={new Date(post.data.publishDate).toISOString()}
 								class="text-foreground/75 text-sm md:text-base"
-								transition:name={`post-${post.slug}-date`}
+								transition:name={`post-${post.id}-date`}
 							>
 								{getFormattedDate(post.data.publishDate)}
 							</time>

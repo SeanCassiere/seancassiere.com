@@ -39,13 +39,13 @@ const nextUrl = page.url.next || null;
 				page.data.map((post) => (
 					<li>
 						<a
-							href={`/blog/${post.slug}`}
+							href={`/blog/${post.id}`}
 							class="group grid gap-2"
 							data-astro-prefetch
 						>
 							<span
 								class="group-hover:decoration-foreground mb-1 underline decoration-transparent underline-offset-2"
-								transition:name={`post-${post.slug}-title`}
+								transition:name={`post-${post.id}-title`}
 							>
 								{post.data.title}
 							</span>
@@ -53,7 +53,7 @@ const nextUrl = page.url.next || null;
 							<time
 								datetime={new Date(post.data.publishDate).toISOString()}
 								class="text-foreground/75 text-sm"
-								transition:name={`post-${post.slug}-date`}
+								transition:name={`post-${post.id}-date`}
 							>
 								{getFormattedDate(post.data.publishDate)}
 							</time>

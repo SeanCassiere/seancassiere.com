@@ -9,7 +9,14 @@ import tseslint from "typescript-eslint";
  */
 export default [
 	{
-		ignores: ["node_modules", ".astro/**", ".vscode/**", ".git/**", "dist/**"],
+		ignores: [
+			"node_modules",
+			".astro/**",
+			".vercel/**",
+			".vscode/**",
+			".git/**",
+			"dist/**",
+		],
 	},
 	{
 		files: ["**/*.{js,mjs,cjs,ts,astro}"],

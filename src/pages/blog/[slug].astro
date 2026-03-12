@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 import PostLink from "@/components/PostLink";
 
@@ -11,7 +11,7 @@ import { getFormattedDate } from "@/utils/dates";
 export const getStaticPaths = (async () => {
 	const posts = await getCollection("blog");
 	return posts.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }) satisfies GetStaticPaths;
@@ -21,11 +21,11 @@ export const prerender = true;
 export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
+const { Content, headings } = await render(entry);
 
 const postHeadings = headings.filter((h) => h.depth === 2);
 
-const socialImage = entry.data.ogImage ?? `/og/${entry.slug}.png`;
+const socialImage = entry.data.ogImage ?? `/og/${entry.id}.png`;
 const articleDate = entry.data.publishDate.toISOString();
 ---
 
@@ -80,14 +80,14 @@ const articleDate = entry.data.publishDate.toISOString();
 		}
 		<h1
 			class="mb-4 text-2xl font-medium tracking-tight text-balance"
-			transition:name={`post-${entry.slug}-title`}
+			transition:name={`post-${entry.id}-title`}
 		>
 			{entry.data.title}
 		</h1>
 		<time
 			class="text-foreground/90 mb-2 block"
 			datetime={articleDate}
-			transition:name={`post-${entry.slug}-date`}
+			transition:name={`post-${entry.id}-date`}
 			>{getFormattedDate(entry.data.publishDate)}</time
 		>
 		<p class="mb-10">

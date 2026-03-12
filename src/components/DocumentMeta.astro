@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 import "../styles/global.css";
 
@@ -92,4 +92,4 @@ const socialImageURL = new URL(
 <meta property="twitter:image" content={socialImageURL} />
 
 <meta name="view-transition" content="same-origin" />
-<ViewTransitions />
+<ClientRouter />
