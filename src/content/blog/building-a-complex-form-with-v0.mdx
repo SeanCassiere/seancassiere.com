@@ -1,0 +1,138 @@
+---
+title: "Building a complex form with v0"
+publishDate: "2026-02-28"
+description: "Your first few prompts are crucial to not making it a nightmare to import"
+draft: false
+---
+
+Let me start with this.
+
+I am not anti-AI. I use it daily, switching between frontier models depending on the task. It is a genuine force multiplier when used correctly.
+
+But tools like v0 are very easy to misuse.
+
+## Why v0?
+
+At work, we were trying to move faster. As the only frontend developer, I had become the bottleneck. Every UI-heavy feature eventually came through me, and that does not scale.
+
+We did not go looking for v0. It found us through word of mouth and the usual algorithmic nudges. I had played with it before and was impressed, but never to the point where I would ship anything from it. Great demos, questionable foundations.
+
+Then things shifted.
+
+[Derek](https://x.com/Derek_Perkins) started using v0 more seriously, not just for demos but for iterating on real UI. He could prompt something into existence, refine it with feedback, and get surprisingly close to production-ready interfaces.
+
+That is when it started to feel like this might actually be the push we needed to get something into production.
+
+## The problem we were solving
+
+We were building a new feature at [Nozzle](https://nozzle.io/?utm_source=seancassiere), and it needed a form. Not a simple one.
+
+This form would drive complex backend logic. It needed to support multiple configurations, work for different types of users, and still feel usable.
+
+Historically, we handled this by splitting things up. Multiple forms, multiple endpoints, separate logic paths. It worked, but it aged poorly and became difficult to maintain.
+
+We wanted a single, flexible form. One surface area, one system, with the backend responsible for interpretation. That is where v0 came in.
+
+## Prompting a form into existence
+
+Derek started prompting, and the first result was already close. Not perfect, but directionally right.
+
+From there, it became an iterative loop of prompting, reviewing, tweaking, and repeating. We layered in team feedback, then customer feedback, and gradually shaped the form into something usable.
+
+This is also where we made our first mistake.
+
+We did not define a proper data model. Partly because we did not fully understand it yet, and partly because we wanted to see what v0 would generate. That felt like a reasonable trade-off at the time.
+
+It was not.
+
+After about three weeks, we had something that looked production-ready. Then it landed on my desk.
+
+## The illusion of “almost done”
+
+At a glance, the form looked great. The UI was clean, the layout made sense, and the UX was thoughtful.
+
+Under the hood, it was chaos.
+
+The form relied heavily on `React.useState`. Not a handful, but over 40 hooks in a single component. Every piece of state was local, every interaction tightly coupled to the UI, and there was no real separation of concerns.
+
+It felt like code written by a junior developer who is strong at UI but has not yet been burned by scaling problems. Not wrong, just not shippable.
+
+## Trying to fix it with v0
+
+My first instinct was to use v0 to fix the issues. That turned out to be the wrong approach.
+
+The deeper assumptions are embedded in generated code, the harder they are to unwind through prompting. I tried more detailed prompts, structured plans, and breaking the problem down into smaller steps.
+
+It did not matter.
+
+v0 is not designed for large-scale refactoring. It is designed for generation. At best, it slightly improved things. At worst, it broke working behaviour.
+
+Add in the roughly ten-minute execution limit per prompt, and it quickly becomes the wrong tool for the job.
+
+## Pulling the code out of the sandbox
+
+At that point, I stopped trying to force it.
+
+I pulled the code down and worked locally using OpenCode with models like 5.2-Codex and Opus 4.5 alongside my editor.
+
+The new approach was simple: treat the UI as salvageable, and treat the state management as disposable.
+
+I tried importing it directly. That failed. I tried breaking it into smaller components and importing incrementally. That also failed.
+
+The issue was fundamental. The UI and state were tightly intertwined. Each component depended on its own `useState` hooks as well as the parent form state, creating a web of props and implicit dependencies.
+
+In our production system, we use [TanStack Form](https://tanstack.com/form/?utm_source=seancassiere). That meant one thing: a full refactor.
+
+## The only thing that worked
+
+The turning point was deciding to fully decouple the UI from the state.
+
+Using OpenCode, I generated a plan to strip out local state, map inputs to a central form model, and rewire interactions through TanStack Form. Once that separation existed, the problem became manageable.
+
+Not easy, but manageable.
+
+From there, it became an iterative process of importing, refactoring, fixing, and repeating. Some components were straightforward, others required deeper changes, but progress was steady.
+
+Eventually, everything clicked into place.
+
+## What actually shipped
+
+By the time we finished, the form had evolved significantly. The data model changed, behaviour changed, and parts of the UI were refined.
+
+It was no longer “the v0 form”. It was a production system that started life in v0.
+
+That distinction matters.
+
+## The real takeaway
+
+Here is the blunt version.
+
+v0 is very good at getting UI on the screen quickly. That is where it shines.
+
+But the moment you let it define behaviour, state, or architecture, you are trading short-term speed for long-term pain.
+
+If I were to do this again, I would absolutely use v0 to generate the base UI. I would not rely on it to define application behaviour, and I would not let it dictate state management.
+
+I would also define a data model early.
+
+Because importing is where you pay the cost. The more behaviour you let v0 invent, the harder that import becomes.
+
+## Takeaways
+
+- v0 is a prototyping tool, not an architecture tool
+- Generated code will fight you if you try to scale it directly
+- Define your data model early, or be prepared to untangle it later
+- Decouple UI from state as soon as possible
+- Use the right tool for the job, generation and refactoring are different problems
+
+## Would I do this again?
+
+Yes.
+
+Despite the friction, it allowed us to parallelise work in a way we could not before.
+
+While the form was being prototyped, I was able to migrate Tailwind CSS v3 to v4, upgrade to React 19, fix long-standing bugs, and ship smaller features.
+
+At the same time, Derek iterated on the UI independently using v0. That separation of concerns helped us move faster and deliver more within the same timeframe.
+
+Just do not confuse fast UI generation with finished software.
