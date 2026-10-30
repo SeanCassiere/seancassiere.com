@@ -41,7 +41,7 @@ The open-graph images can be edited by using the [Vercel OG Playground](https://
 	```tsx
 	<div tw="flex flex-col w-full h-full justify-between bg-[#fffcf5] py-8">
 		<div tw="flex flex-col w-full justify-center px-10">
-			<p tw="text-3xl mb-5 font-medium text-neutral-600">Sunday</p>
+			<p tw="text-3xl mt-4 mb-5 font-medium text-neutral-600">Sunday</p>
 			<h1 tw="text-6xl font-bold -mt-1 leading-snug">Hello</h1>
 		</div>
 		<div
@@ -49,7 +49,7 @@ The open-graph images can be edited by using the [Vercel OG Playground](https://
 		>
 			<div tw="flex items-center">
 				<span tw="w-[30px] h-[30px] bg-black mr-3" />
-				<p tw="font-semibold text-3xl">Google</p>
+				<p tw="font-semibold text-3xl my-4">Google</p>
 			</div>
 			<div tw="text-3xl text-neutral-900">by Sean</div>
 		</div>
