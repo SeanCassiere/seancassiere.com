@@ -15,6 +15,8 @@ const config = {
 		require.resolve("@ianvs/prettier-plugin-sort-imports"),
 		require.resolve("prettier-plugin-tailwindcss") /* Must come last */,
 	],
+	// match `compressHTML: true` in astro.config.mjs
+	astroCompressHTML: "html",
 	overrides: [
 		{
 			files: "**/*astro",
