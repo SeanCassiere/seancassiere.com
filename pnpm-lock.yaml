@@ -103,8 +103,8 @@ importers:
         specifier: ^8.72.1
         version: 8.72.1(eslint@10.13.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)
       zod:
-        specifier: ^4.1.13
-        version: 4.1.13
+        specifier: ^4.6.7
+        version: 4.6.7
 
 packages:
 
@@ -3670,9 +3670,6 @@ packages:
 
   zod@4.1.11:
     resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
-
-  zod@4.1.13:
-    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
 
   zod@4.3.6:
     resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
@@ -7490,8 +7487,6 @@ snapshots:
   yocto-queue@1.2.2: {}
 
   zod@4.1.11: {}
-
-  zod@4.1.13: {}
 
   zod@4.3.6: {}
 
