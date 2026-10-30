@@ -1,5 +1,5 @@
 import { defineConfig, sharpImageService } from "astro/config";
-import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
@@ -14,6 +14,8 @@ export default defineConfig({
 	prefetch: true,
 	site: "https://seancassiere.com/",
 	output: "server",
+	// keep Astro 6's HTML-aware whitespace handling (Astro 7 defaults to "jsx")
+	compressHTML: true,
 	adapter: vercel(),
 	image: sharpImageService(),
 	markdown: {
@@ -22,18 +24,20 @@ export default defineConfig({
 			theme: "one-dark-pro",
 			wrap: true,
 		},
-		gfm: true,
-		remarkPlugins: [remarkCodeTitle],
-		rehypePlugins: [
-			rehypeSlug,
-			rehypeHeadingIds,
-			[
-				rehypeAutoLinkHeadings,
-				{
-					behavior: "wrap",
-				},
+		processor: unified({
+			gfm: true,
+			remarkPlugins: [remarkCodeTitle],
+			rehypePlugins: [
+				rehypeSlug,
+				rehypeHeadingIds,
+				[
+					rehypeAutoLinkHeadings,
+					{
+						behavior: "wrap",
+					},
+				],
 			],
-		],
+		}),
 	},
 	integrations: [mdx(), sitemap()],
 	vite: {
